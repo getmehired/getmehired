@@ -2,10 +2,13 @@
 Get Me Hired Application to enroll Mentors and Students
 
 # students
-Tasmia Aqila
+Evan Khan
 
-# students
-Mainul Chowdhury
+# Hobbies
+- Travelling
+- Photography
+- Watching movies and TV series
+- Drawing
 
 
 
