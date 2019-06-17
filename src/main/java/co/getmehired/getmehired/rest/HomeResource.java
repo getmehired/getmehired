@@ -5,10 +5,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class HomeResource {
-	
-	@GetMapping("/hello")
+
+	@GetMapping("/api/talents")
+
 	public String home() {
-		return "Hello World";
+		return "Hello orni";
 	}
 
 }
