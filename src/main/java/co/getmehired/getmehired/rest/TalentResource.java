@@ -43,7 +43,7 @@ public class TalentResource {
       return talent;
 }
 	
-	@PutMapping("/api/talents")
+	@PutMapping("/api/talents/{")
 	public UpdateInfo updateinfo(@RequestBody Talent talent) {
 		UpdateInfo new_info=new UpdateInfo();
 		new_info.setName(talent.getName());
@@ -54,8 +54,10 @@ public class TalentResource {
 	
   @RequestMapping(value = "/api/talents",method = RequestMethod.DELETE)
   
-    public Talent deleteTalent( Talent talent) {
-    	return talent;
+    public void deleteTalent( Talent talent) {
+	  
+    	talent.setName(null);
+    	talent.setAddress(null);
     }
 	
 
