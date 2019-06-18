@@ -3,8 +3,8 @@ package co.getmehired.getmehired.model;
 import java.util.Date;
 
 public class Talent {
-
-	private String name;
+	
+	private String name; 
 	private Integer phoneNumber;
 	private String emailAddress;
 	private Timezone timezone;
@@ -31,7 +31,6 @@ public class Talent {
 	private String newPosition;
 	private Date jobStartdate;
 	private String jobStartdateStr;
-
 
 
 	public String getName() {

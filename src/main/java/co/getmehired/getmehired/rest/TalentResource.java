@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import co.getmehired.getmehired.model.Talent;
 import co.getmehired.getmehired.model.UpdateUserInfo;
 
+
 @RestController
 public class TalentResource {
 	
@@ -75,5 +76,4 @@ public class TalentResource {
 		return talent;
 	}
 	
-
 }
