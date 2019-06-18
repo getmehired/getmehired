@@ -167,10 +167,8 @@ public class Talent {
 	}
 
 	public String getAddress() {
-		if (this.address !=null) {
+	
 			return address;
-		}
-		return "Address not found";
 	}
 	
 	public void setAddress(String address) {
@@ -178,10 +176,8 @@ public class Talent {
 	}
 	
 	public String getCalendlyUrl() {
-		if(this.calendlyUrl!=null) {
+		
 			return calendlyUrl;
-		}
-		return "calendlyUrl not found";
 	}
 	
 
@@ -191,10 +187,9 @@ public class Talent {
 	
 	
 	public Integer getSsnNumber() {
-		if(this.ssnNumber!=null) {
+
 			return ssnNumber;
-		}
-		return 0;
+
 	}
 	
 	public void setSsnNumber(Integer ssnNumber) {
@@ -203,10 +198,9 @@ public class Talent {
 	
 	
 	public Integer getBankAccount() {
-		if (this.bankAccount !=null) {
+
 			return bankAccount;
-		}
-		return 0;
+
 	}
 	
 	public void setBankAccount(Integer bankAccount) {
@@ -215,10 +209,9 @@ public class Talent {
 	
 	
 	public Integer getRoutingNumber() {
-		if (this.routingNumber !=null) {
+
 			return routingNumber;
-		}
-		return 0;
+
 	}
 	
 	public void setRoutingNumber(Integer routingNumber) {
@@ -226,10 +219,8 @@ public class Talent {
 	}
 	
 	public String getName() {
-		if (this.name !=null) {
+
 			return name;
-		}
-		return "name not found";
 	}
 	
 	public void setName(String name) {
@@ -237,10 +228,9 @@ public class Talent {
 	}
 	
 	public Integer getPhoneNumber() {
-		if(this.phoneNumber !=null) {
+
 			return phoneNumber;
-		}
-		return 0;
+
 	}
 	
 	public void setPhoneNumber(Integer phoneNumber) {
@@ -248,10 +238,9 @@ public class Talent {
 	}
 	
 	public String getEmailAddress() {
-		if(this.emailAddress!=null) {
+
 			return emailAddress;
-		}
-		return "Email address not found";
+
 	}
 	
 	public void setEmailAddress(String emailAddress) {

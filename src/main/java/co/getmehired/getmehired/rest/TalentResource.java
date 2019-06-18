@@ -25,6 +25,7 @@ public class TalentResource {
 	@PostMapping("/api/talents")
 	public Talent saveTalent(@RequestBody Talent talent) {
 		
+
 	    try {
 			Date date1 = new SimpleDateFormat("dd-MM-yyyy").parse(talent.getImmigrationExpiaryStr());
 			Date date2 = new SimpleDateFormat("dd-MM-yyyy").parse(talent.getGraduationDatestr());
@@ -43,7 +44,7 @@ public class TalentResource {
       return talent;
 }
 	
-	@PutMapping("/api/talents/{")
+	@PutMapping("/api/talents/")
 	public UpdateInfo updateinfo(@RequestBody Talent talent) {
 		UpdateInfo new_info=new UpdateInfo();
 		new_info.setName(talent.getName());
@@ -52,6 +53,8 @@ public class TalentResource {
 		return new_info;
 	}
 	
+	
+	//this will delete name and address of the user//
   @RequestMapping(value = "/api/talents",method = RequestMethod.DELETE)
   
     public void deleteTalent( Talent talent) {
