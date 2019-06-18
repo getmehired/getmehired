@@ -11,8 +11,8 @@
 	<groupId>co.getmehired</groupId>
 	<artifactId>getmehired</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>getmehired</name>
-	<description>Get Me Hired Enrollment App for Student and Mentor</description>
+	<name>Get Me Hired</name>
+	<description>Get Me Hired student and mentor enrollment app</description>
 
 	<properties>
 		<java.version>11</java.version>
