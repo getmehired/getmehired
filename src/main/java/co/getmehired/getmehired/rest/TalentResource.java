@@ -7,11 +7,8 @@ import java.util.Date;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 
 import co.getmehired.getmehired.model.Talent;
-import co.getmehired.getmehired.model.UpdateUserInfo;
 
 
 @RestController
@@ -36,44 +33,26 @@ public class TalentResource {
 
 	
 //	@GetMapping("/api/talents")
-//	public Talent getTalent(Talent talent) {
-//		Talent showTalent = new Talent();
-//		showTalent.setName("Jonathan");
-//		showTalent.setPhoneNumber(423434434);
-//		showTalent.setEmailAddress("kohinoor@getmehired.com");
-//		showTalent.setAddress("ChicagoIL");
-//		showTalent.setImmigrationExpiaryStr("08-12-2020");
-//		showTalent.setGraduationDateStr("03-09-2019");
-//		showTalent.setJobStartdateStr("05-03-2019");
-//		showTalent.setSsnNumber(312312);
-//		showTalent.setBankAccount(75345234);
-//		showTalent.setRoutingNumber(324234);
-//		showTalent.setDegreeSubject("IndustrialEngineering");
-//		showTalent.setSalaryStart(75000);
-//		showTalent.setCuurrentJob("DEVELOPER");
-//		showTalent.setCurrentEmployer("ZENETA");
-//		showTalent.setJobSalary(80000);
-//		showTalent.setNewEmployer("FACEBOOK");
-//		showTalent.setNewPosition("DEVELOPER");
-//		//showTalent.setCitizenship("INDIA");
-//		
-//		return showTalent;
+//	public List<TalentDTO> getTalents(Talent talent) {
+//		return null;
+//	}
+
+//	@GetMapping("/api/talents/{id}")
+//	public TalentDTO getTalent(@PathVariable String id) {
+//		return null;
 //	}
 
 	
-	//User can update 3 fields, name, phonenumber and emailaddress
-	@PutMapping("/api/talents")
-	public UpdateUserInfo updateTalent(@RequestBody Talent talentinfo) {
-		UpdateUserInfo newshowTalent = new UpdateUserInfo();
-		newshowTalent.setName(talentinfo.getName());
-		newshowTalent.setPhoneNumber(talentinfo.getPhoneNumber());
-		newshowTalent.setEmailAddress(talentinfo.getEmailAddress());
-		return newshowTalent;
-	}
+//	@PutMapping("/api/talents/{id}")
+//	public TalentDTO updateTalent(
+//			@PathVariable String id,
+//			@RequestBody Talent talent) {
+//		return null;
+//	}
 	
-	@DeleteMapping(path = "/api/talents")
-	public Talent deleteTalent(Talent talent) {
-		return talent;
-	}
+//	@DeleteMapping("/api/talents/{id}")
+//	public TalentDTO deleteTalent(@PathVariable String id) {
+//		return null;
+//	}
 	
 }

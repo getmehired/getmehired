@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>co.getmehired</groupId>
 	<artifactId>getmehired</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0-SNAPSHOT</version>
 	<name>Get Me Hired</name>
 	<description>Get Me Hired student and mentor enrollment app</description>
 
