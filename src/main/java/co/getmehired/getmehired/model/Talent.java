@@ -4,9 +4,12 @@ import java.util.Date;
 
 import javax.validation.constraints.NotBlank;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import lombok.Data;
 
 @Data
+@Document(collection = "talents")
 public class Talent {
 	
 	private String name; 
