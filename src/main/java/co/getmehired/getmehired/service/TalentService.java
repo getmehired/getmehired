@@ -3,11 +3,14 @@ package co.getmehired.getmehired.service;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import co.getmehired.getmehired.model.Talent;
+import co.getmehired.getmehired.model.dto.TalentDTO;
 import co.getmehired.getmehired.repository.TalentRepository;
 
 @Service
@@ -29,6 +32,18 @@ public class TalentService {
 		}
 		
 		return talentRepository.save(talent);
+	}
+
+	public List<Talent> getTalents() {
+		return talentRepository.findAll();
+	}
+
+	public Optional<Talent> getTalentById(String id) {
+		return talentRepository.findById(id);
+	}
+
+	public Optional<Talent> getTalentByName(String id) {
+		return talentRepository.findByName(id);
 	}
 
 }

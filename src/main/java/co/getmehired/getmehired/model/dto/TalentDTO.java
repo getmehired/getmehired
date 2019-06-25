@@ -1,19 +1,19 @@
-package co.getmehired.getmehired.model;
+package co.getmehired.getmehired.model.dto;
 
 import java.util.Date;
 
-import javax.validation.constraints.NotBlank;
-
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-
+import co.getmehired.getmehired.model.Citizenship;
+import co.getmehired.getmehired.model.Degree;
+import co.getmehired.getmehired.model.EmploymentStatus;
+import co.getmehired.getmehired.model.Immigration;
+import co.getmehired.getmehired.model.Objective;
+import co.getmehired.getmehired.model.Support;
+import co.getmehired.getmehired.model.Timezone;
 import lombok.Data;
 
 @Data
-@Document(collection = "talents")
-public class Talent {
+public class TalentDTO {
 	
-	@Id
 	private String id;
 	
 	private String name; 
@@ -30,7 +30,6 @@ public class Talent {
 	
 	private String address;
 	
-	@NotBlank(message = "SSN Number must not be empty")
 	private String ssnNumber;
 	
 	private Integer bankAccount;
