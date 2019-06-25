@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,7 +16,7 @@ import co.getmehired.getmehired.model.Talent;
 public class TalentResource {
 	
 	@PostMapping("/api/talents")
-	public Talent saveTalent(@RequestBody Talent talent) {
+	public Talent saveTalent(@Validated @RequestBody Talent talent) {
 
 		try {
 			Date date = new SimpleDateFormat("dd-MM-yyyy").parse(talent.getImmigrationExpiaryStr());
