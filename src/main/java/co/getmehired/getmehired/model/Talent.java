@@ -2,76 +2,76 @@ package co.getmehired.getmehired.model;
 
 import java.util.Date;
 
+import javax.validation.constraints.NotBlank;
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+import lombok.Data;
+
+@Data
+@Document(collection = "talents")
 public class Talent {
-
-
-
-	private String name;
-    private Integer phoneNumber;
-    private String emailAddress;
-    private Timezone timezone;   
-    private String immigrationExpiaryStr;
-    private Date immigrationExpiary;
-    private String address;
-    private String calendlyUrl;
-    private Integer ssnNumber;
-    private Integer bankAccount;
-    private Integer routingNumber;
-    private Citizenship citizenship;
-    private ImmigrationStatuts immigrationStatus;
-    private String degreeSubject;
-    private String graduationDate;
-    private String objective;
-    private Integer salaryStart;
-    private String cuurrentJob;
-    private String currentEmployer;  
-    private String jobStartdate;
-    private Integer jobSalary;
-    private String newEmployer;
-    private String newPosition;
-    private String accademicDegree;
-    private String suuportNeeded;
-    private String employmentStart;
-
-    
-    public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public Integer getPhoneNumber() {
-		return phoneNumber;
-	}
-	public void setPhoneNumber(Integer phoneNumber) {
-		this.phoneNumber = phoneNumber;
-	}
-	public String getEmailAddress() {
-		return emailAddress;
-	}
-	public void setEmailAddress(String emailAddress) {
-		this.emailAddress = emailAddress;
-	}
-	public Timezone getTimezone() {
-		return timezone;
-	}
-	public void setTimezone(Timezone timezone) {
-		this.timezone = timezone;
-	}
-	public Date getImmigrationExpiary() {
-		return immigrationExpiary;
-	}
-	public void setImmigrationExpiary(Date immigrationExpiary) {
-		this.immigrationExpiary = immigrationExpiary;
-	}
-	public String getAddress() {
-		return address;
-	}
-	public void setAddress(String address) {
-		this.address = address;
-	}
-	public String getCalendlyUrl() {
-		return calendlyUrl;
+	
+	@Id
+	private String id;
+	
+	private String name; 
+	
+	private Integer phoneNumber;
+	
+	private String emailAddress;
+	
+	private Timezone timezone;
+	
+	private String immigrationExpiaryStr;
+	
+	private Date immigrationExpiary;
+	
+	private String address;
+	
+	@NotBlank(message = "SSN Number must not be empty")
+	private String ssnNumber;
+	
+	private Integer bankAccount;
+	
+	private Integer routingNumber;
+	
+	private Citizenship citizenship;
+	
+	private Immigration immigrationStatus;
+	
+	private Degree accademicDegree;
+	
+	private String degreeSubject;
+	
+	private Date graduationDate;
+	
+	private String graduationDateStr;
+	
+	private Support suuportNeeded;
+	
+	private Objective objective;
+	
+	private EmploymentStatus employmentStart;
+	
+	private Integer salaryStart;
+	
+	private String cuurrentJob;
+	
+	private String currentEmployer;
+	
+	private Integer jobSalary;
+	
+	private String newEmployer;
+	
+	private String newPosition;
+	
+	private Date jobStartdate;
+	
+	private String jobStartdateStr;
+	
+}
 	}
 	public void setCalendlyUrl(String calendlyUrl) {
 		this.calendlyUrl = calendlyUrl;
