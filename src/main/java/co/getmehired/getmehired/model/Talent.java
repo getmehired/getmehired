@@ -2,10 +2,15 @@ package co.getmehired.getmehired.model;
 
 import java.util.Date;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public class Talent {
 	
 	private String name; 
+	@NotNull(message = "phone no can't be null")
 	private Integer phoneNumber;
+	@Size(min=3,max=10,message="email must be netween 3 and 10")
 	private String emailAddress;
 	private String immigrationExpiaryStr;
 	private Date immigrationExpiary;

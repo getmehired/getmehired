@@ -1,12 +1,18 @@
 package co.getmehired.getmehired.rest;
 
+import java.awt.PageAttributes.MediaType;
 import java.text.ParseException;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.validation.Valid;
+import javax.websocket.server.PathParam;
+
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,12 +24,13 @@ import co.getmehired.getmehired.model.Talent;
 import co.getmehired.getmehired.model.UpdateInfo;
 
 @RestController
+@CrossOrigin
 public class TalentResource {
 	
-
+  @RequestMapping("/api/talents")
 	
-	@PostMapping("/api/talents")
-	public Talent saveTalent(@RequestBody Talent talent) {
+	@PostMapping()
+	public Talent saveTalent(@Valid @RequestBody Talent talent) {
 		
 
 	    try {
@@ -43,8 +50,8 @@ public class TalentResource {
 	
       return talent;
 }
-	
-	@PutMapping("/api/talents/")
+	 
+	@PutMapping("/api/talents/{name}")
 	public UpdateInfo updateinfo(@RequestBody Talent talent) {
 		UpdateInfo new_info=new UpdateInfo();
 		new_info.setName(talent.getName());
@@ -57,10 +64,11 @@ public class TalentResource {
 	//this will delete name and address of the user//
   @RequestMapping(value = "/api/talents",method = RequestMethod.DELETE)
   
-    public void deleteTalent( Talent talent) {
-	  
+    public Talent deleteTalent( Talent talent) {
+	 
     	talent.setName(null);
     	talent.setAddress(null);
+    	return talent;
     }
 	
 
