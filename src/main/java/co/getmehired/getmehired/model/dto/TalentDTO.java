@@ -11,6 +11,7 @@ import co.getmehired.getmehired.model.Support;
 import co.getmehired.getmehired.model.Timezone;
 import lombok.Data;
 
+
 @Data
 public class TalentDTO {
 	

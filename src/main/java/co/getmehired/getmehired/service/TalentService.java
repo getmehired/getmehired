@@ -46,4 +46,8 @@ public class TalentService {
 		return talentRepository.findByName(id);
 	}
 
+	public void deletebyId(String id) {
+		 talentRepository.deleteById(id);
+	}
+
 }
