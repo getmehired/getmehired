@@ -7,6 +7,7 @@ import javax.validation.constraints.NotBlank;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import co.getmehired.getmehired.validator.UniqueEmailAddress;
 import lombok.Data;
 
 @Data
@@ -20,6 +21,7 @@ public class Talent {
 	
 	private Integer phoneNumber;
 	
+	@UniqueEmailAddress
 	private String emailAddress;
 	
 	private Timezone timezone;
