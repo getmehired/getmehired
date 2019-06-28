@@ -45,5 +45,12 @@ public class TalentService {
 	public Optional<Talent> getTalentByName(String id) {
 		return talentRepository.findByName(id);
 	}
+	
+	public Optional<Talent> removeTalentById(String id) {
+		Optional<Talent> t=talentRepository.findById(id);
+		 talentRepository.deleteById(id);
+		 return t;
+	}
+
 
 }
