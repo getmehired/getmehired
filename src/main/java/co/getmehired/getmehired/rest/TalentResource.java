@@ -54,7 +54,7 @@ public class TalentResource {
 			
 			talentDTOs.add(dto);
 		}
-		System.out.print("hommeeee");
+		//System.out.print("hommeeee");
 		return talentDTOs;
 	}
 
@@ -92,6 +92,7 @@ public class TalentResource {
 				t.getJobSalary(),t.getNewEmployer(),t.getNewPosition());
 	  // saving the new talent in repo 
 	    talentService.save(t);
+	    talentService.removeTalentById(id);
 	    return t_dto;
 	   
 		
