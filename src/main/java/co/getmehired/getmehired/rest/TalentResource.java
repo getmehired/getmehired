@@ -41,18 +41,18 @@ public class TalentResource {
 		
 		for (Talent t : talents) {
 	    TalentDTO dto = new TalentDTO(t.getId(),t.getName(),t.getPhoneNumber(),t.getEmailAddress(),
-					t.getAddress(),t.getCalendlyUrl(),t.getTimezone(),t.getSsnNumber(),t.getBankAccount(),
-					t.getRoutingNumber(),t.getCitizenship(),t.getImmigrationStatus(),t.getImmigrationExpiary(),
-					t.getAccademicDegree(),t.getDegreeSubject(),t.getGraduationDate(),t.getSuuportNeeded(),t.getObjective(),
-					t.getEmploymentStat(),t.getSalaryStart(),t.getCurrentJob(),t.getCurrentEmployer(),t.getJobStartdate(),
-					t.getJobSalary(),t.getNewEmployer(),t.getNewPosition());
+	    		t.getAddress(),t.getCalendlyUrl(),t.getTimezone(),t.getSsnNumber(),t.getBankAccount(),t.getRoutingNumber(),
+	    		t.getCitizenship(),t.getImmigrationStatus(),t.getImmigrationExpiaryStr(),t.getImmigrationExpiary(),t.getAccademicDegree(),
+	    		t.getDegreeSubject(),t.getGraduationDate(),t.getGraduationDateStr(),t.getSuuportNeeded(),t.getObjective(),
+	    		t.getEmploymentStat(),t.getSalaryStart(),t.getCurrentJob(),t.getCurrentEmployer(),t.getJobStartdate(),t.getJobStartdateStr(),t.getJobSalary(),
+	    		t.getNewEmployer(),t.getNewPosition());
 			//dto.setId(t.getId());
 			//dto.setName(t.getName());
 			//dto.setEmailAddress(t.getEmailAddress());
 			//dto.setPhoneNumber(t.getPhoneNumber());
 			//TODO: HW: add all other fields (use a method)
 			
-			talentDTOs.add(dto);
+		     talentDTOs.add(dto);
 		}
 		//System.out.print("hommeeee");
 		return talentDTOs;
@@ -65,11 +65,11 @@ public class TalentResource {
 //		Talent t = talentService.getTalentByName(id).orElseGet(null);
 		
 		TalentDTO dto =new TalentDTO(t.getId(),t.getName(),t.getPhoneNumber(),t.getEmailAddress(),
-				t.getAddress(),t.getCalendlyUrl(),t.getTimezone(),t.getSsnNumber(),t.getBankAccount(),
-				t.getRoutingNumber(),t.getCitizenship(),t.getImmigrationStatus(),t.getImmigrationExpiary(),
-				t.getAccademicDegree(),t.getDegreeSubject(),t.getGraduationDate(),t.getSuuportNeeded(),t.getObjective(),
-				t.getEmploymentStat(),t.getSalaryStart(),t.getCurrentJob(),t.getCurrentEmployer(),t.getJobStartdate(),
-				t.getJobSalary(),t.getNewEmployer(),t.getNewPosition());
+	    		t.getAddress(),t.getCalendlyUrl(),t.getTimezone(),t.getSsnNumber(),t.getBankAccount(),t.getRoutingNumber(),
+	    		t.getCitizenship(),t.getImmigrationStatus(),t.getImmigrationExpiaryStr(),t.getImmigrationExpiary(),t.getAccademicDegree(),
+	    		t.getDegreeSubject(),t.getGraduationDate(),t.getGraduationDateStr(),t.getSuuportNeeded(),t.getObjective(),
+	    		t.getEmploymentStat(),t.getSalaryStart(),t.getCurrentJob(),t.getCurrentEmployer(),t.getJobStartdate(),t.getJobStartdateStr(),t.getJobSalary(),
+	    		t.getNewEmployer(),t.getNewPosition());
 		//dto.setId(t.getId());
 		///dto.setName(t.getName());
 		//dto.setEmailAddress(t.getEmailAddress());
@@ -85,11 +85,11 @@ public class TalentResource {
 	  Talent old_talent = talentService.getTalentById(id).orElseGet(null);
 	  /// making a dto talent from new talent
 	  TalentDTO t_dto=new TalentDTO(t.getId(),t.getName(),t.getPhoneNumber(),t.getEmailAddress(),
-				t.getAddress(),t.getCalendlyUrl(),t.getTimezone(),t.getSsnNumber(),t.getBankAccount(),
-				t.getRoutingNumber(),t.getCitizenship(),t.getImmigrationStatus(),t.getImmigrationExpiary(),
-				t.getAccademicDegree(),t.getDegreeSubject(),t.getGraduationDate(),t.getSuuportNeeded(),t.getObjective(),
-				t.getEmploymentStat(),t.getSalaryStart(),t.getCurrentJob(),t.getCurrentEmployer(),t.getJobStartdate(),
-				t.getJobSalary(),t.getNewEmployer(),t.getNewPosition());
+	    		t.getAddress(),t.getCalendlyUrl(),t.getTimezone(),t.getSsnNumber(),t.getBankAccount(),t.getRoutingNumber(),
+	    		t.getCitizenship(),t.getImmigrationStatus(),t.getImmigrationExpiaryStr(),t.getImmigrationExpiary(),t.getAccademicDegree(),
+	    		t.getDegreeSubject(),t.getGraduationDate(),t.getGraduationDateStr(),t.getSuuportNeeded(),t.getObjective(),
+	    		t.getEmploymentStat(),t.getSalaryStart(),t.getCurrentJob(),t.getCurrentEmployer(),t.getJobStartdate(),t.getJobStartdateStr(),t.getJobSalary(),
+	    		t.getNewEmployer(),t.getNewPosition());
 	  // saving the new talent in repo 
 	    talentService.save(t);
 	    talentService.removeTalentById(id);
@@ -105,11 +105,11 @@ public class TalentResource {
 	   Talent t = talentService.getTalentById(id).orElseGet(null);
 	 /// making a dto talent from that talent
 	   TalentDTO t_dto=new TalentDTO(t.getId(),t.getName(),t.getPhoneNumber(),t.getEmailAddress(),
-					t.getAddress(),t.getCalendlyUrl(),t.getTimezone(),t.getSsnNumber(),t.getBankAccount(),
-					t.getRoutingNumber(),t.getCitizenship(),t.getImmigrationStatus(),t.getImmigrationExpiary(),
-					t.getAccademicDegree(),t.getDegreeSubject(),t.getGraduationDate(),t.getSuuportNeeded(),t.getObjective(),
-					t.getEmploymentStat(),t.getSalaryStart(),t.getCurrentJob(),t.getCurrentEmployer(),t.getJobStartdate(),
-					t.getJobSalary(),t.getNewEmployer(),t.getNewPosition());
+	    		t.getAddress(),t.getCalendlyUrl(),t.getTimezone(),t.getSsnNumber(),t.getBankAccount(),t.getRoutingNumber(),
+	    		t.getCitizenship(),t.getImmigrationStatus(),t.getImmigrationExpiaryStr(),t.getImmigrationExpiary(),t.getAccademicDegree(),
+	    		t.getDegreeSubject(),t.getGraduationDate(),t.getGraduationDateStr(),t.getSuuportNeeded(),t.getObjective(),
+	    		t.getEmploymentStat(),t.getSalaryStart(),t.getCurrentJob(),t.getCurrentEmployer(),t.getJobStartdate(),t.getJobStartdateStr(),t.getJobSalary(),
+	    		t.getNewEmployer(),t.getNewPosition());
 	   
 	   /// delete the talent from repo
 	   talentService.removeTalentById(id);

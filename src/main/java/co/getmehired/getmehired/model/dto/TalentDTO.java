@@ -20,14 +20,14 @@ import lombok.AllArgsConstructor;
 public class TalentDTO {
 	
 	
-	public TalentDTO(String id2, String name2, Integer phoneNumber2, String emailAddress2, String address2,
+	/*public TalentDTO(String id2, String name2, Integer phoneNumber2, String emailAddress2, String address2,
 			String calendlyUrl2, Timezone timezone2, String ssnNumber2, Integer bankAccount2, Integer routingNumber2,
 			Citizenship citizenship2, Immigration immigrationStatus2, Date immigrationExpiary2, Degree accademicDegree2,
 			String degreeSubject2, Date graduationDate2, Support suuportNeeded2, Objective objective2,
 			EmploymentStatus employmentStat2, Integer salaryStart2, String cuurrentJob2, String currentEmployer2,
 			Date jobStartdate2, Integer jobSalary2, String newEmployer2, String newPosition2) {
 		// TODO Auto-generated constructor stub
-	}
+	}*/
 
 	private String id;
 	
