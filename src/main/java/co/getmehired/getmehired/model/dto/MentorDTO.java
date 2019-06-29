@@ -1,34 +1,26 @@
-package co.getmehired.getmehired.model;
-
-import java.util.Date;
+package co.getmehired.getmehired.model.dto;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-
+import co.getmehired.getmehired.model.Degree;
+import co.getmehired.getmehired.model.TalentStatus;
+import co.getmehired.getmehired.model.Timezone;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
 @AllArgsConstructor
-@Document(collection="mentor")
+public class MentorDTO {
+    private String id;
 
-public class Mentor {
-	@Id
-	private String id;
-	
-	@NotBlank
 	private String nameMentor; 
 	
-	@NotNull
+
 	private Integer phoneNumberMentor;
-	
-	@NotBlank
+
 	private String emailAddressMentor;
-	
-	@NotBlank
+
 	private String addressMentor;
 	
 	
@@ -36,7 +28,7 @@ public class Mentor {
 	
 	private Timezone timezoneMentor;
 	
-	@NotBlank(message = "SSN Number must not be empty")
+
 	private String ssnNumber;
 	
 	
@@ -47,21 +39,19 @@ public class Mentor {
 	
 	
 	private Degree accademicDegreeMentor;
-	
-	@NotBlank
+
 	private String degreeSubjectMentor;
 	
 	private String mentorExpertise;
 	
-	@NotBlank
+
 	private String name;
 	
-	@NotBlank
+
 	private String noteTalent;
 	
 	private TalentStatus talentStatus;
 	
 	private String meetingTopic;
-	
-	
+
 }

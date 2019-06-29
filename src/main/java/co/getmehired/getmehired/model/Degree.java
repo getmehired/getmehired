@@ -1,9 +1,9 @@
 package co.getmehired.getmehired.model;
 
 public enum Degree {
-	GED,
+	HIGHSCHOOL,
 	DIPLOMA,
-	BACHELOR,
+	BACHELORS,
 	MASTERS,
 	PHD,
 	POSTDOC

@@ -75,7 +75,7 @@ public class TalentResource {
 		//dto.setEmailAddress(t.getEmailAddress());
 		//dto.setPhoneNumber(t.getPhoneNumber());
 		//TODO: HW: add all other fields (use a method)
-		System.out.print("hommeeee  id");
+		//System.out.print("hommeeee  id");
 		return dto;
 	}
 
