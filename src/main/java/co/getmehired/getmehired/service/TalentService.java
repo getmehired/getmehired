@@ -56,10 +56,5 @@ public class TalentService {
 		 talentRepository.deleteById(id);
 	}
 	
-	public boolean emailExist(String email) {
-		boolean exist = talentRepository.existsByEmailAddress(email);
-		return exist;
-	}
-
-
+	
 }
