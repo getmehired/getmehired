@@ -96,5 +96,4 @@ public class Talent {
 	private Date jobStartdate;
 	
 	private String jobStartdateStr;
-	
 }
