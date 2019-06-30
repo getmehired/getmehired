@@ -2,9 +2,11 @@ package co.getmehired.getmehired.model;
 
 public enum TalentStatus {
 	
-	ENROLLED,
-	COMPLETED,
-	DISCONTINUED,
-	LEFT_COUNTRY
+	InGoodStanding, 
+	RequiresAdditionalHelp, 
+	MissedMeeting, 
+	FallingBehind, 
+	Demotivated, 
+	NeedsImmediateattention
 
 }
