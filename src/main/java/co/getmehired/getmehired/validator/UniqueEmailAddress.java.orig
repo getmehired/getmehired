@@ -21,4 +21,8 @@ public @interface UniqueEmailAddress {
 
     Class<? extends Payload>[] payload() default {};
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> bce36b26d02855c3b8d969c4ea199446b9175875

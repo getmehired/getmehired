@@ -13,4 +13,8 @@ public interface TalentRepository extends MongoRepository<Talent, String> {
 
 	boolean existsByEmailAddress(String email);
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> bce36b26d02855c3b8d969c4ea199446b9175875
