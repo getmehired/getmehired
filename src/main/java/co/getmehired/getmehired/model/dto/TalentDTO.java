@@ -22,7 +22,6 @@ public class TalentDTO {
 	
 	private Integer phoneNumber;
 
-	
 	private String emailAddress;
 	
 	private Timezone timezone;
