@@ -1,6 +1,9 @@
 package co.getmehired.getmehired.rest;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +20,6 @@ import co.getmehired.getmehired.model.Talent;
 import co.getmehired.getmehired.model.Timezone;
 import co.getmehired.getmehired.model.dto.TalentDTO;
 import co.getmehired.getmehired.service.TalentService;
-import lombok.AllArgsConstructor;
 
 
 @RestController
@@ -51,7 +53,7 @@ public class TalentResource {
 
 			TalentDTO dto = new TalentDTO(t.getId(),t.getName(),t.getPhoneNumber(), t.getEmailAddress(), t.getTimezone(), null, t.getImmigrationExpiary(),
 			t.getAddress(),t.getSsnNumber(),t.getBankAccount(), t.getRoutingNumber(),t.getCitizenship(), t.getImmigrationStatus(), t.getAccademicDegree(),
-			t.getDegreeSubject(),t.getGraduationDate(), null, t.getSuuportNeeded(),null, null, null, t.getCuurrentJob(), t.getCurrentEmployer(),
+			t.getDegreeSubject(),t.getGraduationDate(), null, t.getSupportNeeded(),null, null, null, t.getCuurrentJob(), t.getCurrentEmployer(),
 			t.getJobSalary(), t.getNewEmployer(),t.getNewPosition(), t.getJobStartdate(), null);
 //			
 			talentDTOs.add(dto);
@@ -74,7 +76,7 @@ public class TalentResource {
 		
 		TalentDTO dto = new TalentDTO(t.getId(),t.getName(),t.getPhoneNumber(), t.getEmailAddress(), t.getTimezone(), null, t.getImmigrationExpiary(),
 		t.getAddress(),t.getSsnNumber(),t.getBankAccount(), t.getRoutingNumber(),t.getCitizenship(), t.getImmigrationStatus(), t.getAccademicDegree(),
-		t.getDegreeSubject(),t.getGraduationDate(), null, t.getSuuportNeeded(),null, null, null, t.getCuurrentJob(), t.getCurrentEmployer(),
+		t.getDegreeSubject(),t.getGraduationDate(), null, t.getSupportNeeded(),null, null, null, t.getCuurrentJob(), t.getCurrentEmployer(),
 		t.getJobSalary(), t.getNewEmployer(),t.getNewPosition(), t.getJobStartdate(), null);
 		
 		return dto;
@@ -98,16 +100,20 @@ public class TalentResource {
 	public Talent updateTalent(@PathVariable String id, @RequestBody Talent talentInfo) {
 		Talent currentTalent = talentService.getTalentById(id).orElseGet(null);
 		
-		currentTalent.setName(talentInfo.getName());
-		currentTalent.setPhoneNumber(talentInfo.getPhoneNumber());
-		currentTalent.setEmailAddress(talentInfo.getEmailAddress());
+		try {
+			currentTalent.setName(talentInfo.getName());
+			currentTalent.setPhoneNumber(talentInfo.getPhoneNumber());
+			currentTalent.setEmailAddress(talentInfo.getEmailAddress());
+			
+		} catch (IllegalArgumentException e) {
+			System.out.println("ID is invalid");
+		}
 		
 		return talentService.save(currentTalent); 
 		
 		
 	}
 	
-
 
 	@DeleteMapping("/api/talents/{id}")
 	public void deleteTalent(@PathVariable String id) {
