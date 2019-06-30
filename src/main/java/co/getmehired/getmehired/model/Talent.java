@@ -2,15 +2,11 @@ package co.getmehired.getmehired.model;
 
 import java.util.Date;
 
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-
+import co.getmehired.getmehired.validator.UniqueEmailAddress;
 import lombok.Data;
 import lombok.AllArgsConstructor;
 
@@ -28,7 +24,7 @@ public class Talent {
 	@NotNull(message = " Must have a phone no")
 	private Integer phoneNumber;
 	
-	@NotBlank(message = " Must have a valid email address")
+	@UniqueEmailAddress
 	private String emailAddress;
 	
 	@NotBlank(message = " Must have a valid address")

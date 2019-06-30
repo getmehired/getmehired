@@ -8,6 +8,6 @@ import co.getmehired.getmehired.model.Mentor;
 
 public interface MentorRepository  extends MongoRepository<Mentor, String> {
 
-
+   Optional<Mentor> findByName(String name);
 
 }

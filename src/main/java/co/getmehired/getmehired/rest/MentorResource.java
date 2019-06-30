@@ -50,6 +50,7 @@ public class MentorResource {
 	@GetMapping("/api/mentors/{id}")
 	public MentorDTO getMentorById (@PathVariable String id) {
 		Mentor m=mentorService.getMentorsById(id).orElseGet(null);
+		//Mentor m=mentorService.getMentorsByName(id).orElseGet(null);
 	    MentorDTO m_dto=new MentorDTO(m.getId(),m.getNameMentor(),m.getPhoneNumberMentor(),m.getEmailAddressMentor(),
                   m.getAddressMentor(),m.getCalendlyUrlMentor(),m.getTimezoneMentor(),m.getSsnNumber(),m.getBankAccountMentor(),
                   m.getRoutingNumberMentor(),m.getAccademicDegreeMentor(),m.getDegreeSubjectMentor(),m.getMentorExpertise(),m.getName(),
@@ -62,6 +63,16 @@ public class MentorResource {
 	public MentorDTO updateMentor(@PathVariable String id,@RequestBody Mentor m) {
 		
 		//Mentor old_mentor=mentorService.getMentorsById(id).orElseGet(null);
+		try {
+			if (mentorService.existMentor(id)) {
+				System.out.print(true);
+				}
+			
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
 	    MentorDTO m_dto=new MentorDTO(m.getId(),m.getNameMentor(),m.getPhoneNumberMentor(),m.getEmailAddressMentor(),
                  m.getAddressMentor(),m.getCalendlyUrlMentor(),m.getTimezoneMentor(),m.getSsnNumber(),m.getBankAccountMentor(),
                  m.getRoutingNumberMentor(),m.getAccademicDegreeMentor(),m.getDegreeSubjectMentor(),m.getMentorExpertise(),m.getName(),

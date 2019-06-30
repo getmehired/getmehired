@@ -21,12 +21,20 @@ public class MentorService {
 		return mentorrepository.save(mentor);
 	}
 	
+	public boolean existMentor(String id) {
+		return mentorrepository.existsById(id);
+		
+	}
 	public List<Mentor> getMentors(){
 		return mentorrepository.findAll();
 	}
 	
 	public Optional<Mentor> getMentorsById(String id) {
 		return mentorrepository.findById(id);
+	}
+	 
+	public Optional<Mentor> getMentorsByName(String name) {
+		return mentorrepository.findByName(name);
 	}
 	
     public Optional< Mentor> removeMentorById(String id) {
