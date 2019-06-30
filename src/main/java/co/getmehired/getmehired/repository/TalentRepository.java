@@ -11,4 +11,6 @@ public interface TalentRepository extends MongoRepository<Talent, String> {
 	
 	Optional<Talent> findByName(String name);
 
+	boolean existsByEmailAddress(String email);
+
 }

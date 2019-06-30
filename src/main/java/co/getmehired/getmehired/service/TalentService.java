@@ -46,6 +46,11 @@ public class TalentService {
 	public Optional<Talent> getTalentByName(String id) {
 		return talentRepository.findByName(id);
 	}
+	
+	public boolean emailExist(String email) {
+		boolean exist = talentRepository.existsByEmailAddress(email);
+		return exist;
+	}
 
 	public void deletebyId(String id) {
 		 talentRepository.deleteById(id);

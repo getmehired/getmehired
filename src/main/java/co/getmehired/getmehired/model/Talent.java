@@ -8,6 +8,7 @@ import javax.validation.constraints.NotNull;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import co.getmehired.getmehired.validator.UniqueEmailAddress;
 import lombok.Data;
 
 
@@ -23,7 +24,7 @@ public class Talent {
 	
 	private Integer phoneNumber;
 	
-	@NotBlank(message = "Authentic verification id. Must match with the unique user")
+	@UniqueEmailAddress
 	private String emailAddress;
 	
 	private Timezone timezone;
