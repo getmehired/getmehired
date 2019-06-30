@@ -33,6 +33,7 @@ public class TalentService {
 		
 		return talentRepository.save(talent);
 	}
+	
 
 	public List<Talent> getTalents() {
 		return talentRepository.findAll();

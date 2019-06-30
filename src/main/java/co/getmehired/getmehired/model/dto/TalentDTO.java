@@ -10,9 +10,10 @@ import co.getmehired.getmehired.model.Objective;
 import co.getmehired.getmehired.model.Support;
 import co.getmehired.getmehired.model.Timezone;
 import lombok.Data;
-
+import lombok.AllArgsConstructor;
 
 @Data
+@AllArgsConstructor
 public class TalentDTO {
 	
 	private String id;
@@ -20,7 +21,7 @@ public class TalentDTO {
 	private String name; 
 	
 	private Integer phoneNumber;
-	
+
 	private String emailAddress;
 	
 	private Timezone timezone;

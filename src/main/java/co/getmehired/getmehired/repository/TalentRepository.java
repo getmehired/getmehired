@@ -5,6 +5,7 @@ import java.util.Optional;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import co.getmehired.getmehired.model.Talent;
+import co.getmehired.getmehired.model.dto.TalentDTO;
 
 public interface TalentRepository extends MongoRepository<Talent, String> {
 	
