@@ -8,4 +8,3 @@ public enum Citizenship {
 	ITALY,
 	GERMANY
 }
-
