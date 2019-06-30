@@ -11,11 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.PostMapping;
-
 import co.getmehired.getmehired.model.Mentor;
 import co.getmehired.getmehired.model.dto.MentorDTO;
-import co.getmehired.getmehired.repository.MentorRepository;
 import co.getmehired.getmehired.service.MentorService;
 
 @RestController
@@ -64,7 +61,7 @@ public class MentorResource {
 	@PutMapping("/api/mentors/{id}")
 	public MentorDTO updateMentor(@PathVariable String id,@RequestBody Mentor m) {
 		
-		Mentor old_mentor=mentorService.getMentorsById(id).orElseGet(null);
+		//Mentor old_mentor=mentorService.getMentorsById(id).orElseGet(null);
 	    MentorDTO m_dto=new MentorDTO(m.getId(),m.getNameMentor(),m.getPhoneNumberMentor(),m.getEmailAddressMentor(),
                  m.getAddressMentor(),m.getCalendlyUrlMentor(),m.getTimezoneMentor(),m.getSsnNumber(),m.getBankAccountMentor(),
                  m.getRoutingNumberMentor(),m.getAccademicDegreeMentor(),m.getDegreeSubjectMentor(),m.getMentorExpertise(),m.getName(),

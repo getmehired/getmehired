@@ -54,7 +54,6 @@ public class TalentResource {
 			
 		     talentDTOs.add(dto);
 		}
-		//System.out.print("hommeeee");
 		return talentDTOs;
 	}
 
@@ -82,7 +81,7 @@ public class TalentResource {
 //TODO: Homework	
 	@PutMapping("/api/talents/{id}")
 	public TalentDTO updateTalent(@PathVariable String id,@RequestBody Talent t) {
-	  Talent old_talent = talentService.getTalentById(id).orElseGet(null);
+	//  Talent old_talent = talentService.getTalentById(id).orElseGet(null);
 	  /// making a dto talent from new talent
 	  TalentDTO t_dto=new TalentDTO(t.getId(),t.getName(),t.getPhoneNumber(),t.getEmailAddress(),
 	    		t.getAddress(),t.getCalendlyUrl(),t.getTimezone(),t.getSsnNumber(),t.getBankAccount(),t.getRoutingNumber(),

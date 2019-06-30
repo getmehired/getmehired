@@ -1,9 +1,6 @@
 package co.getmehired.getmehired.service;
 
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -34,7 +31,8 @@ public class MentorService {
 	
     public Optional< Mentor> removeMentorById(String id) {
     	Optional<Mentor> m=mentorrepository.findById(id);
-        mentorrepository.deleteById(id);    	
+        mentorrepository.deleteById(id);    
+        //mentorrepository.delete(m);
         return m;
     }
 }
