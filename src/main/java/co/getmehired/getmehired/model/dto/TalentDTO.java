@@ -20,7 +20,7 @@ public class TalentDTO {
 	
 	private String name; 
 	
-	private Integer phoneNumber;
+	private String phoneNumber;
 	
 	private String emailAddress;
 	

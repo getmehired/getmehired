@@ -4,6 +4,8 @@ import java.util.Date;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import co.getmehired.getmehired.validator.UniqueEmailAddress;
@@ -18,11 +20,14 @@ public class Talent {
 	@Id
 	private String id;
 	
-	@NotBlank(message = " Must have a name")
+	
+	@NotNull(message = " Must have a name Starting with a capital")
+	@Pattern(regexp = "^[A-Za-z]*$")
 	private String name; 
 	
-	@NotNull(message = " Must have a phone no")
-	private Integer phoneNumber;
+	@NotNull(message = " Must have a phone no in this format +1-XXX-XXX-XXXX")
+	@Pattern(regexp="^\\+[1]{1}-\\d{3}-\\d{3}-\\d{4}$")
+	private String phoneNumber;
 	
 	@UniqueEmailAddress
 	private String emailAddress;
