@@ -1,13 +1,21 @@
 package co.getmehired.getmehired.rest;
 
+<<<<<<< HEAD
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Date;
+=======
 import java.util.ArrayList;
+>>>>>>> aff1665e29892370b2367cf2af93650d5560e0c6
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
+<<<<<<< HEAD
+=======
 import org.springframework.web.bind.annotation.CrossOrigin;
+>>>>>>> aff1665e29892370b2367cf2af93650d5560e0c6
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,42 +25,44 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import co.getmehired.getmehired.model.Talent;
+<<<<<<< HEAD
+import co.getmehired.getmehired.model.Timezone;
+=======
+>>>>>>> aff1665e29892370b2367cf2af93650d5560e0c6
 import co.getmehired.getmehired.model.dto.TalentDTO;
-import co.getmehired.getmehired.service.TalentService;
 import co.getmehired.getmehired.service.TalentService;
 
 @CrossOrigin
 @RestController
 public class TalentResource {
-
+<<<<<<< HEAD
+	
 	@Autowired
 	private TalentService talentService;
 	
+	@PostMapping("/api/talents")
+	public Talent saveTalent(@Validated @RequestBody Talent talent) {
 		
 		talent = talentService.save(talent);
 		return talent;
 	
-	@PostMapping("/api/talents")
-	public Talent saveTalent(@Validated @RequestBody Talent talent) {
-		talent = talentService.save(talent);
-		return talent;
 	}
 
+	
 	@GetMapping("/api/talents")
 	public List<TalentDTO> getTalents() {
 		List<TalentDTO> talentDTOs = new ArrayList<>();
-
+		
 		List<Talent> talents = talentService.getTalents();
-
+		
 		for (Talent t : talents) {
-			TalentDTO dto=new TalentDTO(t.getId(),t.getName(),t.getPhoneNumber(),t.getEmailAddress(),t.getTimezone(),t.getImmigrationExpiaryStr(),
-					t.getImmigrationExpiary(),t.getAddress(),t.getSsnNumber(),t.getBankAccount(),t.getRoutingNumber(),t.getCitizenship(),t.getImmigrationStatus(),
-					t.getAccademicDegree(),t.getDegreeSubject(),t.getGraduationDate(),t.getGraduationDateStr(),t.getSuuportNeeded(),t.getObjective(),t.getEmploymentStat(),t.getSalaryStart(),t.getCurrentJob(),
-					t.getCurrentEmployer(),t.getJobSalary(),t.getNewEmployer(),t.getNewPosition(),t.getJobStartdate(),t.getJobStartdateStr());
+//			TalentDTO dto = new TalentDTO();
+//			dto.setId(t.getId());
+//			dto.setName(t.getName());
+//			dto.setEmailAddress(t.getEmailAddress());
+//			dto.setPhoneNumber(t.getPhoneNumber());
+//			//TODO: HW: add all other fields (use a method)
 
-			talentDTOs.add(dto);
-		}
-		return talentDTOs;
 			TalentDTO dto = new TalentDTO(t.getId(),t.getName(),t.getPhoneNumber(), t.getEmailAddress(), t.getTimezone(), null, t.getImmigrationExpiary(),
 			t.getAddress(),t.getSsnNumber(),t.getBankAccount(), t.getRoutingNumber(),t.getCitizenship(), t.getImmigrationStatus(), t.getAccademicDegree(),
 			t.getDegreeSubject(),t.getGraduationDate(), null, t.getSupportNeeded(),null, null, null, t.getCuurrentJob(), t.getCurrentEmployer(),
@@ -61,47 +71,45 @@ public class TalentResource {
 			talentDTOs.add(dto);
 		}
 		
+		return talentDTOs;
+	}
+
 	@GetMapping("/api/talents/{id}")
 	public TalentDTO getTalent(@PathVariable String id) {
-		Talent t = talentService.getTalentById(id).orElseGet(null);
-
-		TalentDTO dto=new TalentDTO(t.getId(),t.getName(),t.getPhoneNumber(),t.getEmailAddress(),t.getTimezone(),t.getImmigrationExpiaryStr(),
-				t.getImmigrationExpiary(),t.getAddress(),t.getSsnNumber(),t.getBankAccount(),t.getRoutingNumber(),t.getCitizenship(),t.getImmigrationStatus(),
-				t.getAccademicDegree(),t.getDegreeSubject(),t.getGraduationDate(),t.getGraduationDateStr(),t.getSuuportNeeded(),t.getObjective(),t.getEmploymentStat(),t.getSalaryStart(),t.getCurrentJob(),
-				t.getCurrentEmployer(),t.getJobSalary(),t.getNewEmployer(),t.getNewPosition(),t.getJobStartdate(),t.getJobStartdateStr());
 		
-		return dto;
-	}
+		Talent t = talentService.getTalentById(id).orElseGet(null);
+//		Talent t = talentService.getTalentByName(id).orElseGet(null);
+		
+//		dto.setId(t.getId());
 //		dto.setName(t.getName());
 //		dto.setEmailAddress(t.getEmailAddress());
 //		dto.setPhoneNumber(t.getPhoneNumber());
 //		//TODO: HW: add all other fields (use a method)
 		
-	@PutMapping("/api/talents/{id}")
-	public TalentDTO updateTalent(@PathVariable String id,@RequestBody Talent t) {
-		TalentDTO dto=new TalentDTO(t.getId(),t.getName(),t.getPhoneNumber(),t.getEmailAddress(),t.getTimezone(),t.getImmigrationExpiaryStr(),
-				t.getImmigrationExpiary(),t.getAddress(),t.getSsnNumber(),t.getBankAccount(),t.getRoutingNumber(),t.getCitizenship(),t.getImmigrationStatus(),
-				t.getAccademicDegree(),t.getDegreeSubject(),t.getGraduationDate(),t.getGraduationDateStr(),t.getSuuportNeeded(),t.getObjective(),t.getEmploymentStat(),t.getSalaryStart(),t.getCurrentJob(),
-				t.getCurrentEmployer(),t.getJobSalary(),t.getNewEmployer(),t.getNewPosition(),t.getJobStartdate(),t.getJobStartdateStr());
-	}
+		TalentDTO dto = new TalentDTO(t.getId(),t.getName(),t.getPhoneNumber(), t.getEmailAddress(), t.getTimezone(), null, t.getImmigrationExpiary(),
+		t.getAddress(),t.getSsnNumber(),t.getBankAccount(), t.getRoutingNumber(),t.getCitizenship(), t.getImmigrationStatus(), t.getAccademicDegree(),
+		t.getDegreeSubject(),t.getGraduationDate(), null, t.getSupportNeeded(),null, null, null, t.getCuurrentJob(), t.getCurrentEmployer(),
+		t.getJobSalary(), t.getNewEmployer(),t.getNewPosition(), t.getJobStartdate(), null);
 		
-		talentService.save(t);
-		talentService.removeTalentById(id);
 		return dto;
 	}
 
-	@DeleteMapping("/api/talents/{id}")
-	public TalentDTO deleteTalent(@PathVariable String id) {
-		Talent t = talentService.getTalentById(id).orElseGet(null);
-
-		TalentDTO dto=new TalentDTO(t.getId(),t.getName(),t.getPhoneNumber(),t.getEmailAddress(),t.getTimezone(),t.getImmigrationExpiaryStr(),
-				t.getImmigrationExpiary(),t.getAddress(),t.getSsnNumber(),t.getBankAccount(),t.getRoutingNumber(),t.getCitizenship(),t.getImmigrationStatus(),
-				t.getAccademicDegree(),t.getDegreeSubject(),t.getGraduationDate(),t.getGraduationDateStr(),t.getSuuportNeeded(),t.getObjective(),t.getEmploymentStat(),t.getSalaryStart(),t.getCurrentJob(),
-				t.getCurrentEmployer(),t.getJobSalary(),t.getNewEmployer(),t.getNewPosition(),t.getJobStartdate(),t.getJobStartdateStr());
-
-		talentService.removeTalentById(id);
-		return dto;
-	}
+//TODO: Homework	
+//	@PutMapping("/api/talents/{id}")
+//	public TalentDTO updateTalent(
+//			@PathVariable String id,
+//			@RequestBody Talent talent) {
+//		return null;
+//	}
+	
+//	@DeleteMapping("/api/talents/{id}")
+//	public TalentDTO deleteTalent(@PathVariable String id) {
+//		return null;
+//	}
+	
+	
+	@PutMapping("/api/talents/{id}")
+	public Talent updateTalent(@PathVariable String id, @RequestBody Talent talentInfo) {
 		Talent currentTalent = talentService.getTalentById(id).orElseGet(null);
 		
 		try {
@@ -125,3 +133,69 @@ public class TalentResource {
 	}
 	
 }
+=======
+
+	@Autowired
+	private TalentService talentService;
+
+	@PostMapping("/api/talents")
+	public Talent saveTalent(@Validated @RequestBody Talent talent) {
+		talent = talentService.save(talent);
+		return talent;
+	}
+
+	@GetMapping("/api/talents")
+	public List<TalentDTO> getTalents() {
+		List<TalentDTO> talentDTOs = new ArrayList<>();
+
+		List<Talent> talents = talentService.getTalents();
+
+		for (Talent t : talents) {
+			TalentDTO dto=new TalentDTO(t.getId(),t.getName(),t.getPhoneNumber(),t.getEmailAddress(),t.getTimezone(),t.getImmigrationExpiaryStr(),
+					t.getImmigrationExpiary(),t.getAddress(),t.getSsnNumber(),t.getBankAccount(),t.getRoutingNumber(),t.getCitizenship(),t.getImmigrationStatus(),
+					t.getAccademicDegree(),t.getDegreeSubject(),t.getGraduationDate(),t.getGraduationDateStr(),t.getSuuportNeeded(),t.getObjective(),t.getEmploymentStat(),t.getSalaryStart(),t.getCurrentJob(),
+					t.getCurrentEmployer(),t.getJobSalary(),t.getNewEmployer(),t.getNewPosition(),t.getJobStartdate(),t.getJobStartdateStr());
+
+			talentDTOs.add(dto);
+		}
+		return talentDTOs;
+	}
+
+	@GetMapping("/api/talents/{id}")
+	public TalentDTO getTalent(@PathVariable String id) {
+		Talent t = talentService.getTalentById(id).orElseGet(null);
+
+		TalentDTO dto=new TalentDTO(t.getId(),t.getName(),t.getPhoneNumber(),t.getEmailAddress(),t.getTimezone(),t.getImmigrationExpiaryStr(),
+				t.getImmigrationExpiary(),t.getAddress(),t.getSsnNumber(),t.getBankAccount(),t.getRoutingNumber(),t.getCitizenship(),t.getImmigrationStatus(),
+				t.getAccademicDegree(),t.getDegreeSubject(),t.getGraduationDate(),t.getGraduationDateStr(),t.getSuuportNeeded(),t.getObjective(),t.getEmploymentStat(),t.getSalaryStart(),t.getCurrentJob(),
+				t.getCurrentEmployer(),t.getJobSalary(),t.getNewEmployer(),t.getNewPosition(),t.getJobStartdate(),t.getJobStartdateStr());
+
+		return dto;
+	}
+
+	@PutMapping("/api/talents/{id}")
+	public TalentDTO updateTalent(@PathVariable String id,@RequestBody Talent t) {
+		TalentDTO dto=new TalentDTO(t.getId(),t.getName(),t.getPhoneNumber(),t.getEmailAddress(),t.getTimezone(),t.getImmigrationExpiaryStr(),
+				t.getImmigrationExpiary(),t.getAddress(),t.getSsnNumber(),t.getBankAccount(),t.getRoutingNumber(),t.getCitizenship(),t.getImmigrationStatus(),
+				t.getAccademicDegree(),t.getDegreeSubject(),t.getGraduationDate(),t.getGraduationDateStr(),t.getSuuportNeeded(),t.getObjective(),t.getEmploymentStat(),t.getSalaryStart(),t.getCurrentJob(),
+				t.getCurrentEmployer(),t.getJobSalary(),t.getNewEmployer(),t.getNewPosition(),t.getJobStartdate(),t.getJobStartdateStr());
+		
+		talentService.save(t);
+		talentService.removeTalentById(id);
+		return dto;
+	}
+
+	@DeleteMapping("/api/talents/{id}")
+	public TalentDTO deleteTalent(@PathVariable String id) {
+		Talent t = talentService.getTalentById(id).orElseGet(null);
+
+		TalentDTO dto=new TalentDTO(t.getId(),t.getName(),t.getPhoneNumber(),t.getEmailAddress(),t.getTimezone(),t.getImmigrationExpiaryStr(),
+				t.getImmigrationExpiary(),t.getAddress(),t.getSsnNumber(),t.getBankAccount(),t.getRoutingNumber(),t.getCitizenship(),t.getImmigrationStatus(),
+				t.getAccademicDegree(),t.getDegreeSubject(),t.getGraduationDate(),t.getGraduationDateStr(),t.getSuuportNeeded(),t.getObjective(),t.getEmploymentStat(),t.getSalaryStart(),t.getCurrentJob(),
+				t.getCurrentEmployer(),t.getJobSalary(),t.getNewEmployer(),t.getNewPosition(),t.getJobStartdate(),t.getJobStartdateStr());
+
+		talentService.removeTalentById(id);
+		return dto;
+	}
+}
+>>>>>>> aff1665e29892370b2367cf2af93650d5560e0c6

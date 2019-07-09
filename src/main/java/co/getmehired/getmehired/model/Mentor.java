@@ -1,61 +1,55 @@
 package co.getmehired.getmehired.model;
 
-//import java.io.File;
-import java.util.Date;
 
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
-
-
 @Data
-//@Document(collection = "talents")
+@AllArgsConstructor
+@Document(collection="mentors")
+
 public class Mentor {
-	
 	@Id
 	private String id;
 	
-	@NotBlank (message= "Must Input Name")
+	@NotBlank
 	private String nameMentor; 
 	
-	@NotEmpty (message= "Must Input Phone Number")
+	@NotNull
 	private Integer phoneNumberMentor;
 	
-	@NotBlank(message = "Authentic verification id. Must match with the unique user")
+	@NotBlank
 	private String emailAddressMentor;
 	
 	@NotBlank
-	private Timezone timezoneMentor;
-	
-	@NotBlank(message = "Should provide atleast one address")
 	private String addressMentor;
 	
-	private String calendlyUrlMentor;
 	
-	private String resumeMentor; //For uploading resume File.io has been imported from java module
+    private String calendlyUrlMentor;
 	
-	@NotNull(message = "Should provide atleast one bank account number")
+	private Timezone timezoneMentor;
+	
+	@NotBlank(message = "SSN Number must not be empty")
+	private String ssnNumber;
+	
+	
 	private Integer bankAccountMentor;
 	
-	@NotNull(message = "Should provide routing number associated with bank account")
+
 	private Integer routingNumberMentor;
 	
-	@NotBlank
+	
 	private Degree accademicDegreeMentor;
 	
 	@NotBlank
 	private String degreeSubjectMentor;
 	
-	@NotBlank
-	private String degreeInstituteMentor;
-	
-	@NotBlank
 	private String mentorExpertise;
 	
 	@NotBlank
@@ -64,6 +58,12 @@ public class Mentor {
 	@NotBlank
 	private String noteTalent;
 	
+	private TalentStatus talentStatus;
+	
+	private String meetingTopic;
+	
+	
+}
 	@NotBlank
 	private TalentStatus talentStatus;
 	

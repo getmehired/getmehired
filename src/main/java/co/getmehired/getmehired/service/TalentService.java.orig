@@ -10,6 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import co.getmehired.getmehired.model.Talent;
+<<<<<<< HEAD
+import co.getmehired.getmehired.model.dto.TalentDTO;
+=======
+>>>>>>> aff1665e29892370b2367cf2af93650d5560e0c6
 import co.getmehired.getmehired.repository.TalentRepository;
 
 @Service
@@ -32,6 +36,10 @@ public class TalentService {
 		
 		return talentRepository.save(talent);
 	}
+<<<<<<< HEAD
+	
+=======
+>>>>>>> aff1665e29892370b2367cf2af93650d5560e0c6
 
 	public List<Talent> getTalents() {
 		return talentRepository.findAll();
@@ -43,19 +51,31 @@ public class TalentService {
 
 	public Optional<Talent> getTalentByName(String id) {
 		return talentRepository.findByName(id);
+<<<<<<< HEAD
+	
+=======
 	}
 	
 	public Optional<Talent> removeTalentById(String id) {
 		Optional<Talent> t=talentRepository.findById(id);
 		 talentRepository.deleteById(id);
 		 return t;
+>>>>>>> aff1665e29892370b2367cf2af93650d5560e0c6
 	}
 	
 	public boolean emailExist(String email) {
 		boolean exist = talentRepository.existsByEmailAddress(email);
 		return exist;
 	}
+<<<<<<< HEAD
+
+	public void deletebyId(String id) {
+		 talentRepository.deleteById(id);
+	}
+	
+	
+=======
     
 
-}
+>>>>>>> aff1665e29892370b2367cf2af93650d5560e0c6
 }

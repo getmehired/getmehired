@@ -1,6 +1,12 @@
 package co.getmehired.getmehired.service;
 
+<<<<<<< HEAD
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+=======
 
+>>>>>>> aff1665e29892370b2367cf2af93650d5560e0c6
 import java.util.List;
 import java.util.Optional;
 
@@ -8,12 +14,43 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import co.getmehired.getmehired.model.Mentor;
+<<<<<<< HEAD
+import co.getmehired.getmehired.model.dto.MentorDTO;
 import co.getmehired.getmehired.repository.MentorRepository;
+import co.getmehired.getmehired.repository.TalentRepository;
+=======
+import co.getmehired.getmehired.repository.MentorRepository;
+>>>>>>> aff1665e29892370b2367cf2af93650d5560e0c6
 
 @Service
 public class MentorService {
 	
 	@Autowired
+<<<<<<< HEAD
+	private MentorRepository mentorRepository;
+	
+	public Mentor save(Mentor mentor) {
+		return mentorRepository.save(mentor);
+	}
+	
+
+	public List<Mentor> getMentors() {
+		return mentorRepository.findAll();
+	}
+
+	public Optional<Mentor> getMentorById(String id) {
+		return mentorRepository.findById(id);
+	}
+
+	public Optional<Mentor> getMentorByName(String id) {
+		return mentorRepository.findByName(id);
+	}
+
+	public void deletebyId(String id) {
+		 mentorRepository.deleteById(id);
+	}
+
+=======
 	private MentorRepository mentorrepository;
 	
 	public Mentor saveMentor(Mentor mentor) {
@@ -43,4 +80,5 @@ public class MentorService {
         //mentorrepository.delete(m);
         return m;
     }
+>>>>>>> aff1665e29892370b2367cf2af93650d5560e0c6
 }

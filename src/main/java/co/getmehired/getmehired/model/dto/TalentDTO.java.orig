@@ -9,8 +9,13 @@ import co.getmehired.getmehired.model.Immigration;
 import co.getmehired.getmehired.model.Objective;
 import co.getmehired.getmehired.model.Support;
 import co.getmehired.getmehired.model.Timezone;
+<<<<<<< HEAD
+import lombok.Data;
+import lombok.AllArgsConstructor;
+=======
 import lombok.AllArgsConstructor;
 import lombok.Data;
+>>>>>>> aff1665e29892370b2367cf2af93650d5560e0c6
 
 @Data
 @AllArgsConstructor
@@ -20,8 +25,13 @@ public class TalentDTO {
 	
 	private String name; 
 	
+<<<<<<< HEAD
+	private Integer phoneNumber;
+
+=======
 	private String phoneNumber;
 	
+>>>>>>> aff1665e29892370b2367cf2af93650d5560e0c6
 	private String emailAddress;
 	
 	private Timezone timezone;
