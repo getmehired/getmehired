@@ -13,7 +13,7 @@ import lombok.Data;
 import lombok.AllArgsConstructor;
 
 @Data
-@Document(collection = "talents")
+//@Document(collection = "talents")
 @AllArgsConstructor
 @Document(collection = "talents")
 public class Talent {
@@ -36,7 +36,7 @@ public class Talent {
 	@NotBlank(message = " Must have a valid address")
 	
 	
-	@NotEmpty
+	//@NotEmpty
 	
 	@NotBlank(message = "Should provide atleast one address")
 	private String address;
@@ -110,9 +110,4 @@ public class Talent {
 	@NotBlank(message = " Must input your new position")
 	private String newPosition;
 	
-
-	@NotEmpty
-	private Date jobStartdate;
-	
-	private String jobStartdateStr;
 }

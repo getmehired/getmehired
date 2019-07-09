@@ -64,9 +64,5 @@ public class Mentor {
 	
 	
 }
-	@NotBlank
-	private TalentStatus talentStatus;
 	
-	private String meetingTopic;
 	
-}

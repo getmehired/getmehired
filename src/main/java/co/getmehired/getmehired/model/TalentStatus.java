@@ -9,4 +9,4 @@ public enum TalentStatus {
 	Demotivated, 
 	NeedsImmediateattention
 }
-}
+

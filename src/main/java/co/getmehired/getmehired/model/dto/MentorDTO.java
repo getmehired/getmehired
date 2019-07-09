@@ -54,8 +54,4 @@ public class MentorDTO {
 
 }
 	
-	private TalentStatus talentStatus;
 	
-	private String meetingTopic;
-
-}
