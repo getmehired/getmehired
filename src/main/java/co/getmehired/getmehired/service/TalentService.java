@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import co.getmehired.getmehired.model.Talent;
-import co.getmehired.getmehired.model.dto.TalentDTO;
 import co.getmehired.getmehired.repository.TalentRepository;
 
 @Service
@@ -46,9 +45,16 @@ public class TalentService {
 		return talentRepository.findByName(id);
 	}
 	
+	public Optional<Talent> removeTalentById(String id) {
+		Optional<Talent> t=talentRepository.findById(id);
+		 talentRepository.deleteById(id);
+		 return t;
+	}
+	
 	public boolean emailExist(String email) {
 		boolean exist = talentRepository.existsByEmailAddress(email);
 		return exist;
 	}
+    
 
 }
