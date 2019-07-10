@@ -10,46 +10,46 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class MentorDTO {
-    private String id;
+	private String id;
 
 	private String nameMentor; 
-	
+
 
 	private Integer phoneNumberMentor;
 
 	private String emailAddressMentor;
 
 	private String addressMentor;
-	
-	
-    private String calendlyUrlMentor;
-	
+
+
+	private String calendlyUrlMentor;
+
 	private Timezone timezoneMentor;
-	
+
 
 	private String ssnNumber;
-	
-	
+
+
 	private Integer bankAccountMentor;
-	
+
 
 	private Integer routingNumberMentor;
-	
-	
+
+
 	private Degree accademicDegreeMentor;
 
 	private String degreeSubjectMentor;
-	
+
 	private String mentorExpertise;
-	
+
 
 	private String name;
-	
+
 
 	private String noteTalent;
-	
+
 	private TalentStatus talentStatus;
-	
+
 	private String meetingTopic;
 
 }
