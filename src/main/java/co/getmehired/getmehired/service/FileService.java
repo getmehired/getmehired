@@ -4,15 +4,17 @@ import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.S3Object;
-import com.sun.xml.internal.messaging.saaj.util.ByteInputStream;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.*;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 
 /**
- * Created by Dell on 09-Jul-19.
+ * Created by Dell on 09-Jul-19
  */
 
 @Service
@@ -24,6 +26,8 @@ public class FileService {
     public static final String S3_SECRET_KEY = ""; // Your secret key
 
     public void uploadFile(MultipartFile file) {
+
+        System.out.println(file.getOriginalFilename());
 
         BasicAWSCredentials credentials = new BasicAWSCredentials(S3_ACCESS_KEY, S3_SECRET_KEY);
         AmazonS3Client client = new AmazonS3Client(credentials);
@@ -39,7 +43,7 @@ public class FileService {
         metadata.setContentType("text");
         metadata.setContentLength(fileBytes.length);
 
-        client.putObject(BUCKET_NAME,"test/test.txt", new ByteInputStream(fileBytes, fileBytes.length), metadata);
+        client.putObject(BUCKET_NAME,"test/test.txt", new ByteArrayInputStream(fileBytes), metadata);
 //
 //
 //        client.putObject(BUCKET_NAME, "test/test.txt", (File) file);
