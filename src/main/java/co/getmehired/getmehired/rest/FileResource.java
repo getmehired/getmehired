@@ -1,5 +1,6 @@
 package co.getmehired.getmehired.rest;
 
+import co.getmehired.getmehired.model.FileMeta;
 import co.getmehired.getmehired.service.FileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
@@ -26,23 +27,28 @@ public class FileResource {
 
 
     //TODO follow post mapping of talent resource
-//    @PostMapping("/api/files")
-//    public FileMeta saveFile(@Validated @RequestBody FileMeta file) {
-//        file = fileService.save(file);
-//        return file;
-//    }
+    @PostMapping("/api/files")
+    public MultipartFile postFiles(@RequestParam("file") MultipartFile file) {
+
+        fileService.uploadFile(file);
+
+        return file;
+
+    }
 
     @PutMapping("/api/files")
     public void upload(@RequestParam("file") MultipartFile file) {
 
-       fileService.uploadFile(file);
+        fileService.uploadFile(file);
 
     }
 
     // TODO pass file id in path variable
     // TODO use the file id to get file path
-    @GetMapping("/api/files/show")
-    public void getFile(@RequestParam String path, HttpServletResponse response) {
+    @GetMapping("/api/files/show/{fileId}")
+    public void getFile(@PathVariable String fileId, HttpServletResponse response) {
+
+        String path = fileService.getFileById(fileId).getPath();
         ByteArrayOutputStream baos = fileService.getFile(path);
         try {
             response.getOutputStream().write(baos.toByteArray());
@@ -54,10 +60,11 @@ public class FileResource {
     }
 
     // TODO pass file id in @PathVariable
-    @GetMapping("/api/files/download")
-    public ResponseEntity<Resource> downloadFile(@RequestParam String path,  HttpServletRequest request) {
+    @GetMapping("/api/files/download/{fileId}")
+    public ResponseEntity<Resource> downloadFile(@PathVariable String fileId,  HttpServletRequest request) {
 
         // TODO get path from database
+        String path = fileService.getFileById(fileId).getPath();
 
         // Try to determine file's content type
         String contentType = request.getServletContext().getMimeType(path);
@@ -71,9 +78,10 @@ public class FileResource {
         ByteArrayResource resource = new ByteArrayResource(baos.toByteArray());
 
         // TODO get actual filename from database
+        String files = fileService.getFileById(fileId).getFilename();
         return ResponseEntity.ok()
                 .contentType(MediaType.parseMediaType(contentType))
-                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + "supal.jpg" + "\"")
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + files + "\"")
                 .body(resource);
     }
 
@@ -81,10 +89,10 @@ public class FileResource {
 
 
     // TODO update this resource - pass the file id
-    @DeleteMapping("/api/files")
-    public void deleteFile() {
+    @DeleteMapping("/api/files/{fileId}")
+    public void deleteFile(@PathVariable String fileId) {
 
-        fileService.delete();
+        fileService.delete(fileId);
 
     }
 
