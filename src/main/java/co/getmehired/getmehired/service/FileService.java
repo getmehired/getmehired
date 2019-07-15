@@ -32,9 +32,9 @@ public class FileService {
     private FileRepository fileRepository;
 
 
-    public static final String BUCKET_NAME = "getmehired-asif";  // Your bucket name
-    public static final String S3_ACCESS_KEY = "AKIART7WELUEMZL6E7V5"; // Your access key
-    public static final String S3_SECRET_KEY = "loT6I4w4c7No9uv3equ2yARK4LjL3ZlP5V36p1no";
+    public static final String BUCKET_NAME = "";  // Your bucket name
+    public static final String S3_ACCESS_KEY = ""; // Your access key
+    public static final String S3_SECRET_KEY = "";
 
     public static final String FOLDER = "test";
 
