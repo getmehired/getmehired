@@ -26,6 +26,12 @@ public class FileResource {
 
 
     //TODO follow post mapping of talent resource
+//    @PostMapping("/api/files")
+//    public FileMeta saveFile(@Validated @RequestBody FileMeta file) {
+//        file = fileService.save(file);
+//        return file;
+//    }
+
     @PutMapping("/api/files")
     public void upload(@RequestParam("file") MultipartFile file) {
 
