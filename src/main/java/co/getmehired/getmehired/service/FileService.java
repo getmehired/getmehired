@@ -7,14 +7,17 @@ import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.S3Object;
+import co.getmehired.getmehired.model.FileMeta;
+import co.getmehired.getmehired.repository.FileRepository;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Optional;
 
 /**
  * Created by Dell on 09-Jul-19.
@@ -23,69 +26,95 @@ import java.io.InputStream;
 @Service
 public class FileService {
 
+	@Autowired
+	private FileRepository fileRepository;
+	public static final String BUCKET_NAME = "getmehiredorni";  // Your bucket name
+	public static final String S3_ACCESS_KEY = "AKIA3I5NQC435TEOIB4H"; // Your access key
+	public static final String S3_SECRET_KEY = "n4HENp4sRwpSTlIggn42dxgNzTczqTVred7c8xQ/";
 
-    public static final String BUCKET_NAME = "";  // Your bucket name
-    public static final String S3_ACCESS_KEY = ""; // Your access key
-    public static final String S3_SECRET_KEY = "";
+	public FileMeta uploadFile(MultipartFile file,String folder) {
 
-    public static final String FOLDER = "";
+		BasicAWSCredentials creds = new BasicAWSCredentials(S3_ACCESS_KEY, S3_SECRET_KEY);
+		AmazonS3 client = AmazonS3ClientBuilder.standard().withRegion(Regions.US_EAST_2).withCredentials(new AWSStaticCredentialsProvider(creds)).build();
 
-    public void uploadFile(MultipartFile file) {
+		byte[] fileBytes = new byte[0];
+		try {
+			fileBytes = file.getBytes();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		System.out.println("Uploading a new object to S3 from a file\n");
+		ObjectMetadata metadata = new ObjectMetadata();
+		metadata.setContentType("text");
+		metadata.setContentLength(fileBytes.length);
 
-        BasicAWSCredentials creds = new BasicAWSCredentials(S3_ACCESS_KEY, S3_SECRET_KEY);
-        AmazonS3 client = AmazonS3ClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(creds)).build();
+		String path = folder + "/" + file.getOriginalFilename();
+		FileMeta fileMeta=new FileMeta(null, file.getOriginalFilename(), folder, path,"Active");
+		client.putObject(BUCKET_NAME, path, new ByteArrayInputStream(fileBytes), metadata);
 
-        byte[] fileBytes = new byte[0];
-        try {
-            fileBytes = file.getBytes();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        System.out.println("Uploading a new object to S3 from a file\n");
-        ObjectMetadata metadata = new ObjectMetadata();
-        metadata.setContentType("text");
-        metadata.setContentLength(fileBytes.length);
+		// TODO update database (call file repository) if upload is successful
+		fileRepository.save( fileMeta);
 
-        String path = FOLDER + "/" + file.getOriginalFilename();
-
-        client.putObject(BUCKET_NAME, path, new ByteArrayInputStream(fileBytes), metadata);
-
-        // TODO update database (call file repository) if upload is successful
-
-        // TODO return FileMeta object
-    }
-
-    public ByteArrayOutputStream getFile(String path){
-
-        BasicAWSCredentials creds = new BasicAWSCredentials(S3_ACCESS_KEY, S3_SECRET_KEY);
-        AmazonS3 client = AmazonS3ClientBuilder.standard().withRegion(Regions.US_EAST_2).withCredentials(new AWSStaticCredentialsProvider(creds)).build();
-
-        S3Object object = client.getObject(BUCKET_NAME, path);
-        InputStream objectData = object.getObjectContent();
-
-        try {
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            IOUtils.copy(objectData, baos);
-            objectData.close();
-
-            return baos;
-        } catch (Exception ex) {
-
-        }
-        return null;
-    }
+		// TODO return FileMeta object
+		return fileMeta;
+	}
 
 
-    // TODO Modify the method, take file id as input, search database, delete from amazon, update database
-    public void delete() {
+	public InputStream getfilebyId(String Id){
 
-        BasicAWSCredentials creds = new BasicAWSCredentials(S3_ACCESS_KEY, S3_SECRET_KEY);
-        AmazonS3 client = AmazonS3ClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(creds)).build();
+		BasicAWSCredentials creds = new BasicAWSCredentials(S3_ACCESS_KEY, S3_SECRET_KEY);
+		AmazonS3 client = AmazonS3ClientBuilder.standard().withRegion(Regions.US_EAST_2).withCredentials(new AWSStaticCredentialsProvider(creds)).build();
 
-        // TODO get file path from database
-        client.deleteObject(BUCKET_NAME, "test/test.txt");
+		Optional<FileMeta> fileMeta= fileRepository.findById(Id);
+		String path= fileMeta.get().getPath();
+		S3Object object=client.getObject(BUCKET_NAME, path);
+		InputStream objectData=object.getObjectContent();
 
-    }
+		return objectData;
+	}
+
+	public Optional<FileMeta> getfileMetabyId(String Id){
+		Optional<FileMeta> fileMeta= fileRepository.findById(Id);
+		return fileMeta;
+	}
+
+	public ByteArrayOutputStream getFile(String path){
+
+		BasicAWSCredentials creds = new BasicAWSCredentials(S3_ACCESS_KEY, S3_SECRET_KEY);
+		AmazonS3 client = AmazonS3ClientBuilder.standard().withRegion(Regions.US_EAST_2).withCredentials(new AWSStaticCredentialsProvider(creds)).build();
+
+		S3Object object = client.getObject(BUCKET_NAME, path);
+		InputStream objectData = object.getObjectContent();
+
+		try {
+			ByteArrayOutputStream baos = new ByteArrayOutputStream();
+			IOUtils.copy(objectData, baos);
+			objectData.close();
+
+			return baos;
+		} catch (Exception ex) {
+
+		}
+		return null;
+	}
+
+
+	// TODO Modify the method, take file id as input, search database, delete from amazon, update database
+	public void delete(String Id) {
+
+		BasicAWSCredentials creds = new BasicAWSCredentials(S3_ACCESS_KEY, S3_SECRET_KEY);
+		AmazonS3 client = AmazonS3ClientBuilder.standard().withRegion(Regions.US_EAST_2).withCredentials(new AWSStaticCredentialsProvider(creds)).build();
+
+		// TODO get file path from database
+		Optional<FileMeta> fileMeta= fileRepository.findById(Id);
+		String path=fileMeta.get().getPath();
+		client.deleteObject(BUCKET_NAME,path );
+		//fileMeta.get().setFileStatus("Deleted");
+		//fileRepository.save(fileMeta);
+		fileRepository.deleteById(Id);
+
+
+	}
 
 
 }
