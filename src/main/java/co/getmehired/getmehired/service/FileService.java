@@ -28,9 +28,9 @@ public class FileService {
 
 	@Autowired
 	private FileRepository fileRepository;
-	public static final String BUCKET_NAME = "getmehiredorni";  // Your bucket name
-	public static final String S3_ACCESS_KEY = "AKIA3I5NQC435TEOIB4H"; // Your access key
-	public static final String S3_SECRET_KEY = "n4HENp4sRwpSTlIggn42dxgNzTczqTVred7c8xQ/";
+	public static final String BUCKET_NAME = "";  // Your bucket name
+	public static final String S3_ACCESS_KEY = ""; // Your access key
+	public static final String S3_SECRET_KEY = "";
 
 	public FileMeta uploadFile(MultipartFile file,String folder) {
 
