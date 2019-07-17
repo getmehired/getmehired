@@ -106,12 +106,19 @@ public class FileService {
 		AmazonS3 client = AmazonS3ClientBuilder.standard().withRegion(Regions.US_EAST_2).withCredentials(new AWSStaticCredentialsProvider(creds)).build();
 
 		// TODO get file path from database
-		Optional<FileMeta> fileMeta= fileRepository.findById(Id);
-		String path=fileMeta.get().getPath();
-		client.deleteObject(BUCKET_NAME,path );
-		//fileMeta.get().setFileStatus("Deleted");
-		//fileRepository.save(fileMeta);
-		fileRepository.deleteById(Id);
+		FileMeta fileMeta;
+		try {
+			fileMeta = fileRepository.findById(Id).orElseThrow(() -> new Exception("Invalid file id"));
+			String path=fileMeta.getPath();
+			System.out.print(fileMeta.getFileStatus());
+			fileMeta.setFileStatus("Deleted");
+			fileRepository.save(fileMeta);
+			client.deleteObject(BUCKET_NAME,path );
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 
 
 	}

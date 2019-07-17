@@ -14,7 +14,7 @@ public class FileMeta {
 	// TODO add required fields
 
 	@Id
-	private String field;
+	private String id;
 
 	private String fileName;
 
