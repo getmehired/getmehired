@@ -11,15 +11,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @AllArgsConstructor
 public class FileMeta {
 
-	// TODO add required fields
-
 	@Id
 	private String id;
-
 	private String fileName;
-
 	private String fileType;
-
 	private String path;
 	private String fileStatus;
 
