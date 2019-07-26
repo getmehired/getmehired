@@ -12,7 +12,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.google.firebase.auth.FirebaseAuth;
 
 import co.getmehired.getmehired.model.Talent;
 import co.getmehired.getmehired.model.dto.TalentDTO;
@@ -32,7 +35,11 @@ public class TalentResource {
 	}
 
 	@GetMapping("/api/talents")
-	public List<TalentDTO> getTalents() {
+	public List<TalentDTO> getTalents(@RequestHeader String idToken) throws Exception {
+		if (!isValidUser(idToken)) {
+			return null;
+		}
+		
 		List<TalentDTO> talentDTOs = new ArrayList<>();
 
 		List<Talent> talents = talentService.getTalents();
@@ -83,5 +90,17 @@ public class TalentResource {
 
 		talentService.removeTalentById(id);
 		return dto;
+	}
+	
+	private boolean isValidUser(String idToken) {
+		try {
+			String uid = FirebaseAuth.getInstance().verifyIdTokenAsync(idToken).get().getUid();
+			String email = FirebaseAuth.getInstance().verifyIdTokenAsync(idToken).get().getEmail();
+			String name = FirebaseAuth.getInstance().verifyIdTokenAsync(idToken).get().getName();
+		} catch (Exception e) {
+			return false;
+		}
+		
+		return true;
 	}
 }

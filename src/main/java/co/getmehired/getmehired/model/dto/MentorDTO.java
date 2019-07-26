@@ -3,7 +3,7 @@ package co.getmehired.getmehired.model.dto;
 
 import co.getmehired.getmehired.model.Degree;
 import co.getmehired.getmehired.model.TalentStatus;
-import co.getmehired.getmehired.model.Timezone;
+import co.getmehired.getmehired.model.TimezoneEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -24,7 +24,7 @@ public class MentorDTO {
 	
     private String calendlyUrlMentor;
 	
-	private Timezone timezoneMentor;
+	private TimezoneEnum timezoneMentor;
 	
 
 	private String ssnNumber;

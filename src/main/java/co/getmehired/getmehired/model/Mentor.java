@@ -33,7 +33,7 @@ public class Mentor {
 	
     private String calendlyUrlMentor;
 	
-	private Timezone timezoneMentor;
+	private TimezoneEnum timezoneMentor;
 	
 	@NotBlank(message = "SSN Number must not be empty")
 	private String ssnNumber;

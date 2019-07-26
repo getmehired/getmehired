@@ -1,5 +1,5 @@
 package co.getmehired.getmehired.model;
 
-public class Timezone {
+public class Country {
 
 }

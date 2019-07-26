@@ -8,7 +8,7 @@ import co.getmehired.getmehired.model.EmploymentStatus;
 import co.getmehired.getmehired.model.Immigration;
 import co.getmehired.getmehired.model.Objective;
 import co.getmehired.getmehired.model.Support;
-import co.getmehired.getmehired.model.Timezone;
+import co.getmehired.getmehired.model.TimezoneEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -24,7 +24,7 @@ public class TalentDTO {
 	
 	private String emailAddress;
 	
-	private Timezone timezone;
+	private TimezoneEnum timezone;
 	
 	private String immigrationExpiaryStr;
 	
