@@ -55,6 +55,11 @@ public class TalentService {
 		boolean exist = talentRepository.existsByEmailAddress(email);
 		return exist;
 	}
+
+	public Optional<Talent> getTalentByEmail(String email) {
+
+		return  talentRepository.findByEmailAddress(email);
+	}
     
 
 }

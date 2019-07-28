@@ -29,17 +29,22 @@ public class TalentResource {
 	private TalentService talentService;
 
 	@PostMapping("/api/talents")
-	public Talent saveTalent(@Validated @RequestBody Talent talent) {
+	public Talent saveTalent(@RequestHeader String idToken,@Validated  @RequestBody Talent talent ) {
+		if(!isValidUser(idToken)) {
+			return null;
+		}
+
 		talent = talentService.save(talent);
 		return talent;
 	}
 
 	@GetMapping("/api/talents")
 	public List<TalentDTO> getTalents(@RequestHeader String idToken) throws Exception {
+
 		if (!isValidUser(idToken)) {
 			return null;
 		}
-		
+
 		List<TalentDTO> talentDTOs = new ArrayList<>();
 
 		List<Talent> talents = talentService.getTalents();
@@ -56,9 +61,12 @@ public class TalentResource {
 	}
 
 	@GetMapping("/api/talents/{id}")
-	public TalentDTO getTalent(@PathVariable String id) {
-		Talent t = talentService.getTalentById(id).orElseGet(null);
+	public TalentDTO getTalent(@RequestHeader String idToken,@PathVariable String id) {
 
+		if(!isValidUser(idToken)) {
+			return null;
+		}
+		Talent t = talentService.getTalentById(id).orElseGet(null);
 		TalentDTO dto=new TalentDTO(t.getId(),t.getName(),t.getPhoneNumber(),t.getEmailAddress(),t.getTimezone(),t.getImmigrationExpiaryStr(),
 				t.getImmigrationExpiary(),t.getAddress(),t.getSsnNumber(),t.getBankAccount(),t.getRoutingNumber(),t.getCitizenship(),t.getImmigrationStatus(),
 				t.getAccademicDegree(),t.getDegreeSubject(),t.getGraduationDate(),t.getGraduationDateStr(),t.getSuuportNeeded(),t.getObjective(),t.getEmploymentStat(),t.getSalaryStart(),t.getCurrentJob(),
@@ -67,20 +75,30 @@ public class TalentResource {
 		return dto;
 	}
 
+
 	@PutMapping("/api/talents/{id}")
-	public TalentDTO updateTalent(@PathVariable String id,@RequestBody Talent t) {
+	public TalentDTO updateTalent(@RequestHeader String idToken,@PathVariable String id,@RequestBody Talent t) {
+
+		if(!isValidUser(idToken)) {
+			return null;
+		}
 		TalentDTO dto=new TalentDTO(t.getId(),t.getName(),t.getPhoneNumber(),t.getEmailAddress(),t.getTimezone(),t.getImmigrationExpiaryStr(),
 				t.getImmigrationExpiary(),t.getAddress(),t.getSsnNumber(),t.getBankAccount(),t.getRoutingNumber(),t.getCitizenship(),t.getImmigrationStatus(),
 				t.getAccademicDegree(),t.getDegreeSubject(),t.getGraduationDate(),t.getGraduationDateStr(),t.getSuuportNeeded(),t.getObjective(),t.getEmploymentStat(),t.getSalaryStart(),t.getCurrentJob(),
 				t.getCurrentEmployer(),t.getJobSalary(),t.getNewEmployer(),t.getNewPosition(),t.getJobStartdate(),t.getJobStartdateStr());
-		
+
 		talentService.save(t);
 		talentService.removeTalentById(id);
 		return dto;
 	}
 
 	@DeleteMapping("/api/talents/{id}")
-	public TalentDTO deleteTalent(@PathVariable String id) {
+	public TalentDTO deleteTalent(@RequestHeader String idToken,@PathVariable String id) {
+
+		if(!isValidUser(idToken)) {
+			return null;
+		}
+
 		Talent t = talentService.getTalentById(id).orElseGet(null);
 
 		TalentDTO dto=new TalentDTO(t.getId(),t.getName(),t.getPhoneNumber(),t.getEmailAddress(),t.getTimezone(),t.getImmigrationExpiaryStr(),
@@ -91,16 +109,17 @@ public class TalentResource {
 		talentService.removeTalentById(id);
 		return dto;
 	}
-	
+
 	private boolean isValidUser(String idToken) {
 		try {
 			String uid = FirebaseAuth.getInstance().verifyIdTokenAsync(idToken).get().getUid();
 			String email = FirebaseAuth.getInstance().verifyIdTokenAsync(idToken).get().getEmail();
 			String name = FirebaseAuth.getInstance().verifyIdTokenAsync(idToken).get().getName();
+
 		} catch (Exception e) {
 			return false;
 		}
-		
+
 		return true;
 	}
 }
