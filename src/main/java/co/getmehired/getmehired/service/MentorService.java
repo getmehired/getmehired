@@ -40,7 +40,15 @@ public class MentorService {
     public Optional< Mentor> removeMentorById(String id) {
     	Optional<Mentor> m=mentorrepository.findById(id);
         mentorrepository.deleteById(id);    
-        //mentorrepository.delete(m);
         return m;
     }
+
+	public boolean emailExist(String email) {
+		boolean exist=mentorrepository.existsByEmailAddressMentor(email);
+		return exist;
+	}
+
+	public Optional<Mentor> getMentorsByEmail(String email) {
+		return mentorrepository.findByEmailAddressMentor(email);
+	}
 }

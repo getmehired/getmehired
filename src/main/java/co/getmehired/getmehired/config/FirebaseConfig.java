@@ -18,12 +18,12 @@ public class FirebaseConfig {
 	@Bean
 	FirebaseApp createFireBaseApp() throws IOException {
 		PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
-		Resource resource = resolver.getResource("classpath:getmehired-firebase-authentication.json");
+		Resource resource = resolver.getResource("classpath:getmehiredui-firebase-authentication.json");
 		FileInputStream serviceAccount = new FileInputStream(resource.getFile());
 
 		FirebaseOptions options = new FirebaseOptions.Builder()
 				.setCredentials(GoogleCredentials.fromStream(serviceAccount))
-				.setDatabaseUrl("https://getmehired-83e79.firebaseio.com")
+				.setDatabaseUrl("https://getmehiredui.firebaseio.com")
 				.build();
 
 		return FirebaseApp.initializeApp(options);
