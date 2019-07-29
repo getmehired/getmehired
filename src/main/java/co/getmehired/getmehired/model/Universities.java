@@ -7,15 +7,18 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
-@Document(collection = "Timezone")
+@Document(collection = "Universities")
 @AllArgsConstructor
-public class Timezone {
+
+public class Universities {
 
 	@Id
 	private String id;
-	private String timezoneID;
-	private String offset;
-	private String abbr;
-	private String value;
-	private String text;
+	private String universityId;
+	private String universityName;
+	private String regionName;
+	private String stateName;
+	private String country;
+	
+	
 }

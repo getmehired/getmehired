@@ -17,6 +17,7 @@
 
 	<properties>
 		<java.version>11</java.version>
+		<maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
 	</properties>
 
 	<dependencies>
@@ -37,6 +38,12 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+		
+		<dependency>
+    		<groupId>com.google.firebase</groupId>
+    		<artifactId>firebase-admin</artifactId>
+    		<version>6.8.0</version>
 		</dependency>
 
 		<dependency>
