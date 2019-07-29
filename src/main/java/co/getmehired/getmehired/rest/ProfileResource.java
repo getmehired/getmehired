@@ -17,49 +17,50 @@ import co.getmehired.getmehired.service.TalentService;
 
 @RestController
 public class ProfileResource {
-	
+
 	@Autowired
 	private MentorService mentorService;
 	@Autowired
-    private TalentService talentService;
-	
+	private TalentService talentService;
+
 	@GetMapping("/api/profiles/me")
 	public ProfileDTO getProfile(@RequestHeader String idToken) {
-		
+
 		if(!isValidUser(idToken)) {
 			return null;
 		}
-		ProfileDTO profile_dto;
+		ProfileDTO profileDto;
 		try {
 			String firebaseId=FirebaseAuth.getInstance().verifyIdTokenAsync(idToken).get().getUid();
 			String name=FirebaseAuth.getInstance().verifyIdTokenAsync(idToken).get().getName();
 			String email=FirebaseAuth.getInstance().verifyIdTokenAsync(idToken).get().getEmail();
-	        if(this.talentService.emailExist(email) )
-	        {
-	        	Talent t=this.talentService.getTalentByEmail(email).orElseGet(null);
-	        	 profile_dto=new ProfileDTO(firebaseId, email, name, t, null);
-	        	
-	        }
-	        if(this.mentorService.emailExist(email)) {
-	        	Mentor m=this.mentorService.getMentorsByEmail(email).orElseGet(null);
-	        	profile_dto =new ProfileDTO(firebaseId, email, name,null,m);
-				
+
+			if(this.talentService.emailExist(email) )
+			{
+				Talent t=this.talentService.getTalentByEmail(email).orElseGet(null);
+				profileDto=new ProfileDTO(firebaseId, email, name, t, null);
+
+			}
+			else if(this.mentorService.emailExist(email)) {
+				Mentor m=this.mentorService.getMentorsByEmail(email).orElseGet(null);
+				profileDto =new ProfileDTO(firebaseId, email, name,null,m);
+
 			} 
-	        else {
-	        	 profile_dto=new ProfileDTO(firebaseId, email, name, null, null);
+			else {
+				profileDto=new ProfileDTO(firebaseId, email, name, null, null);
 
 			}        
-		
+
 		} catch (InterruptedException | ExecutionException e) {
 			return null;
 		}
 
-		return profile_dto;
-		
+		return profileDto;
+
 	}
-	
+
 	private boolean isValidUser(String idToken) {
-		
+
 		try {
 			String uid=FirebaseAuth.getInstance().verifyIdTokenAsync(idToken).get().getUid();
 			String name=FirebaseAuth.getInstance().verifyIdTokenAsync(idToken).get().getName();
@@ -67,7 +68,7 @@ public class ProfileResource {
 		} catch (InterruptedException | ExecutionException e) {
 			return false;
 		}
-		
+
 		return true;
 	}
 

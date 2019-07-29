@@ -13,24 +13,24 @@ import co.getmehired.getmehired.service.CommonDataService;
 @RestController
 public class CommonDataResource {
 	@Autowired
-	private CommonDataService commondataservice;
+	private CommonDataService commondataService;
 
 	@GetMapping("/api/timezones")
-	public List<Timezone> getTimezones(@RequestParam String search) {
+	public List<Timezone> getTimezones() {
 
-		return commondataservice.getTimezone(search);
+		return commondataService.getTimezone();
 	}
 
 	@GetMapping("/api/countries")
-	public List<Country> getCountries(@RequestParam String search) {
+	public List<Country> getCountries() {
 
-		return commondataservice.getCountry(search);
+		return commondataService.getCountry();
 	}
 
 	@GetMapping("/api/universities")
-	public List<University> getUniversities(@RequestParam String search) {
+	public List<University> getUniversities(@RequestParam String name) {
 
-		return commondataservice.getUniversity(search);	
+		return commondataService.getUniversity(name);	
 	}
 
 }

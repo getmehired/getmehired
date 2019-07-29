@@ -20,43 +20,31 @@ public class CommonDataService {
 	@Autowired
 	private TimezoneRepository timezonerepository;
 
-	public List<Timezone> getTimezone(String name) {
+	public List<Timezone> getTimezone() {
 
-		List<Timezone> alltimezones=timezonerepository.findAll();
-		List<Timezone> matchedtimezones= new ArrayList<>();
-		for (Timezone t:alltimezones) {
-			if(t.getAbbr().startsWith(name)) {
-				matchedtimezones.add(t);
-			}		
-		}
-		return matchedtimezones;		
+		List<Timezone> allTimezones=timezonerepository.findAll();
+		return allTimezones;		
 	}
 
 
-	public List<Country> getCountry(String name) {
+	public List<Country> getCountry() {
 
-		List<Country> allcountries=countryrepository.findAll();
-		List<Country> matchedcountries= new ArrayList<>();
-		for (Country c:allcountries) {
-			if(c.getName().startsWith(name)) {
-				matchedcountries.add(c);
-			}		
-		}
-		return matchedcountries;		
+		List<Country> allCountries=countryrepository.findAll();
+		return allCountries;		
 	}
 
 
 
 	public List<University> getUniversity(String name) {
 
-		List<University> alluniversities=universityrepository.findAll();
-		List<University> matcheduniversities= new ArrayList<>();
-		for (University u:alluniversities) {
-			if(u.getUniversityName().startsWith(name)) {
-				matcheduniversities.add(u);
+		List<University> allUniversities=universityrepository.findAll();
+		List<University> matchedUniversities= new ArrayList<>();
+		for (University u:allUniversities) {
+			if(u.getUniversityName().contains(name)) {
+				matchedUniversities.add(u);
 			}		
 		}
-		return matcheduniversities;		
+		return matchedUniversities;		
 	}
 
 
