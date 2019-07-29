@@ -18,7 +18,7 @@ public class FirebaseConfig {
 	@Bean
 	FirebaseApp createFireBaseApp() throws IOException {
 		PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
-		Resource resource = resolver.getResource("classpath:getmehiredui-firebase-authentication.json");
+		Resource resource = resolver.getResource("classpath:getmehired-firebase-authentication.json");
 		FileInputStream serviceAccount = new FileInputStream(resource.getFile());
 
 		FirebaseOptions options = new FirebaseOptions.Builder()
