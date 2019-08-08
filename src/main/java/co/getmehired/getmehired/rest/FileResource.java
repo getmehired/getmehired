@@ -24,6 +24,7 @@ import java.util.concurrent.ExecutionException;
  * Created by Dell on 09-Jul-19.
  */
 
+@CrossOrigin
 @RestController
 public class FileResource {
 

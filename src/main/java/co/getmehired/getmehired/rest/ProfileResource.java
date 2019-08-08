@@ -3,6 +3,7 @@ package co.getmehired.getmehired.rest;
 import java.util.concurrent.ExecutionException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,6 +16,7 @@ import co.getmehired.getmehired.model.dto.ProfileDTO;
 import co.getmehired.getmehired.service.MentorService;
 import co.getmehired.getmehired.service.TalentService;
 
+@CrossOrigin
 @RestController
 public class ProfileResource {
 

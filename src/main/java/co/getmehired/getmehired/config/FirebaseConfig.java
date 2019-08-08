@@ -23,7 +23,7 @@ public class FirebaseConfig {
 
 		FirebaseOptions options = new FirebaseOptions.Builder()
 				.setCredentials(GoogleCredentials.fromStream(serviceAccount))
-				.setDatabaseUrl("https://getmehiredui.firebaseio.com")
+				.setDatabaseUrl("https://getmehired-991c2.firebaseio.com")
 				.build();
 
 		return FirebaseApp.initializeApp(options);

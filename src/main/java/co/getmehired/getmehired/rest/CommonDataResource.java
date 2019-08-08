@@ -2,6 +2,7 @@ package co.getmehired.getmehired.rest;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,6 +11,7 @@ import co.getmehired.getmehired.model.Timezone;
 import co.getmehired.getmehired.model.University;
 import co.getmehired.getmehired.service.CommonDataService;
 
+@CrossOrigin
 @RestController
 public class CommonDataResource {
 	@Autowired
