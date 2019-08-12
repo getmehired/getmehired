@@ -71,5 +71,7 @@ public class TalentDTO {
 	private Date jobStartdate;
 
 	private String jobStartdateStr;
+	
+	private String resumeFileId;
 
 }

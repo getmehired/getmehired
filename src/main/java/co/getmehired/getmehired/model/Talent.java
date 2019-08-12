@@ -103,7 +103,7 @@ public class Talent {
 
 	@NotBlank(message = " Must input your new position")
 	private String newPosition;
-
-
+	
+	private String resumeFileId;
 
 }
