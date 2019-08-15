@@ -45,7 +45,7 @@ public class FileResource {
 	}
 
 	@GetMapping("/api/files/show/{fileId}")
-	public FileMeta getFile(@RequestHeader String idToken,@PathVariable(name = "fileId") String fileId, HttpServletResponse response) {
+	public FileMeta getFile(@PathVariable(name = "fileId") String fileId, HttpServletResponse response) {
 		FileMeta fileMeta = fileService.getFileMetaById(fileId);
 		if(fileMeta != null && GMHConstants.STATUS_VALID.equals(fileMeta.getFileStatus())) {
 			ByteArrayOutputStream baos = fileService.getFile(fileMeta.getPath());
