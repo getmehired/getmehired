@@ -10,8 +10,15 @@ public class Talent {
 	private Timezone timezone;
 	private String immigrationExpiaryStr;
 	private Date immigrationExpiary;
+	private Integer ssnNumber;
 	
 
+	public Integer getSsnNumber() {
+		return ssnNumber;
+	}
+	public void setSsnNumber(Integer ssnNumber) {
+		this.ssnNumber = ssnNumber;
+	}
 	public String getName() {
 		return name;
 	}
