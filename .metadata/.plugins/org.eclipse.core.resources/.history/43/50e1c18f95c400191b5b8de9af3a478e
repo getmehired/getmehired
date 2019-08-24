@@ -1,0 +1,127 @@
+package co.getmehired.getmehired.rest;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import co.getmehired.getmehired.model.Talent;
+import co.getmehired.getmehired.model.Timezone;
+import co.getmehired.getmehired.model.dto.TalentDTO;
+import co.getmehired.getmehired.service.TalentService;
+
+
+@RestController
+public class TalentResource {
+	
+	@Autowired
+	private TalentService talentService;
+	
+	@PostMapping("/api/talents")
+	public Talent saveTalent(@Validated @RequestBody Talent talent) {
+		
+		talent = talentService.save(talent);
+		return talent;
+	
+	}
+
+	
+	@GetMapping("/api/talents")
+	public List<TalentDTO> getTalents(Object t) {
+		List<TalentDTO> talentDTOs = new ArrayList<>();
+		
+		List<Talent> talents = talentService.getTalents();
+		
+		for (Talent t : talents) {
+//			TalentDTO dto = new TalentDTO();
+//			dto.setId(t.getId());
+//			dto.setName(t.getName());
+//			dto.setEmailAddress(t.getEmailAddress());
+//			dto.setPhoneNumber(t.getPhoneNumber());
+//			//TODO: HW: add all other fields (use a method)
+
+			
+			TalentDTO dto = newTalentDTO(t.getId());
+					dto.setPhoneNumber(t.getPhoneNumber());
+					dto.setEmailAddress(t.getEmailAddress());
+					dto.setTimezone(t.getTimezone());  
+					dto.setImmigrationExpiary(t.getImmigrationExpiary());
+					dto.setAddress(t.getAddress());
+			        dto.setSsnNumber(t.getSsnNumber());
+		    	    dto.setBankAccount(t.getBankAccount()); 
+			        dto.setRoutingNumber(t.getRoutingNumber());
+			        dto.setCitizenship(t.getCitizenship()); 
+			        dto.setImmigrationStatus(t.getImmigrationStatus()); 
+			        dto.setAccademicDegree(t.getAccademicDegree());
+			        dto.setDegreeSubject(t.getDegreeSubject());
+			        dto.setGraduationDate(t.getGraduationDate()); 
+                    dto.setSuuportNeeded(t.getSupportNeeded()); 
+                    dto.setCuurrentJob(t.getCuurrentJob()); 
+                    dto.setCurrentEmployer(t.getCurrentEmployer());
+			        dto.setJobSalary(t.getJobSalary()); 
+			        dto.setNewEmployer(t.getNewEmployer());
+			        dto.setNewPosition(t.getNewPosition());
+			        dto.setJobStartdate(t.getJobStartdate()); 
+//			
+			talentDTOs.add(dto);
+		}
+		
+		return talentDTOs;
+	}
+
+	//TODO: Homework	
+//	@PutMapping("/api/talents/{id}")
+//	public TalentDTO updateTalent(
+//			@PathVariable String id,
+//			@RequestBody Talent talent) {
+//		return null;
+//	}
+	
+//	@DeleteMapping("/api/talents/{id}")
+//	public TalentDTO deleteTalent(@PathVariable String id) {
+//		return null;
+//	}
+	
+	
+	private TalentDTO newTalentDTO(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@PutMapping("/api/talents/{id}")
+	public Talent updateTalent(@PathVariable String id, @RequestBody Talent talentInfo) {
+		Talent currentTalent = talentService.getTalentById(id).orElseGet(null);
+		
+		try {
+			currentTalent.setName(talentInfo.getName());
+			currentTalent.setPhoneNumber(talentInfo.getPhoneNumber());
+			currentTalent.setEmailAddress(talentInfo.getEmailAddress());
+			
+		} catch (IllegalArgumentException e) {
+			System.out.println("ID is invalid");
+		}
+		
+		return talentService.save(currentTalent); 
+		
+		
+	}
+	
+
+	@DeleteMapping("/api/talents/{id}")
+	public void deleteTalent(@PathVariable String id) {
+		 this.talentService.deletebyId(id);
+	}
+	
+}

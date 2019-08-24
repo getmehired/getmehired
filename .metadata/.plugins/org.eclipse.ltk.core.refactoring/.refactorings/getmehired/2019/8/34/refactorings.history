@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring accessors="false" comment="Delete element from project &apos;getmehired&apos;&#x0D;&#x0A;- Original project: &apos;getmehired&apos;&#x0D;&#x0A;- Original element: &apos;co.getmehired.getmehired.rest.TalentResource.getTalent(...)&apos;" description="Delete element" element1="/src\/main\/java&lt;co.getmehired.getmehired.rest{TalentResource.java[TalentResource~getTalent~QString;" elements="1" flags="589830" id="org.eclipse.jdt.ui.delete" resources="0" stamp="1566431688570" subPackages="false" version="1.0"/>
+</session>

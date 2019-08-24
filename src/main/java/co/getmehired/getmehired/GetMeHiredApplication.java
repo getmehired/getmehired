@@ -11,3 +11,7 @@ public class GetMeHiredApplication {
 	}
 
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9c3f42e9fbfdab8bda7070866b952abfd8aa372b
