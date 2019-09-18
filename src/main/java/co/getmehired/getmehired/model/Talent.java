@@ -51,7 +51,7 @@ public class Talent {
 	
 	private String graduationDateStr;
 	
-	private Support suuportNeeded;
+	private Support supportNeeded;
 	
 	private Objective objective;
 	
@@ -59,7 +59,7 @@ public class Talent {
 	
 	private Integer salaryStart;
 	
-	private String cuurrentJob;
+	private String currentJob;
 	
 	private String currentEmployer;
 	

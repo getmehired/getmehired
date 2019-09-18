@@ -15,10 +15,10 @@ import co.getmehired.getmehired.repository.TalentRepository;
 
 @Service
 public class TalentService {
-	
+
 	@Autowired
 	private TalentRepository talentRepository;
-	
+
 	public Talent save(Talent talent) {
 		try {
 			Date date = new SimpleDateFormat("dd-MM-yyyy").parse(talent.getImmigrationExpiaryStr());
@@ -30,7 +30,7 @@ public class TalentService {
 		} catch (ParseException e) {
 			System.out.println(talent.getImmigrationExpiaryStr());
 		}
-		
+
 		return talentRepository.save(talent);
 	}
 
@@ -45,10 +45,17 @@ public class TalentService {
 	public Optional<Talent> getTalentByName(String id) {
 		return talentRepository.findByName(id);
 	}
-	
+
+	public Optional<Talent> removeTalentById(String id) {
+		Optional<Talent> t=talentRepository.findById(id);
+		talentRepository.deleteById(id);
+		return t;
+	}
+
 	public boolean emailExist(String email) {
 		boolean exist = talentRepository.existsByEmailAddress(email);
 		return exist;
 	}
+
 
 }
